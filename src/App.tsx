@@ -1,19 +1,31 @@
-import { Canvas } from "@react-three/fiber";
+import { useEffect, useState } from "react";
+import Game from "./game";
 
-function App() {
+export default function App() {
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    function handleEscapeKey(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setIsPaused((prev) => !prev);
+      }
+    }
+
+    window.addEventListener("keydown", handleEscapeKey);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
+
   return (
     <div className="h-screen">
-      <Canvas>
-        <mesh>
-          <boxGeometry />
-          <meshStandardMaterial />
-        </mesh>
-
-        <ambientLight intensity={0.1} />
-        <directionalLight color="red" position={[0, 0, 5]} />
-      </Canvas>
+      <Game isPaused={isPaused} />
+      <div className="fixed inset-0 flex items-center justify-center">
+        <ul>
+          <li className="z-10 text-2xl font-bold">asdasd</li>
+        </ul>
+      </div>
     </div>
   );
 }
-
-export default App;
