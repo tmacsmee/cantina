@@ -7,11 +7,12 @@ import {
 } from "ecctrl";
 import { useEffect, useRef } from "react";
 import { Camera, LoopOnce, LoopRepeat, Object3D, Vector3 } from "three";
+import { useCamera } from "./hooks/use-camera";
 import type { Controls } from "./lib/types";
 
-const CAMERA_OFFSET = new Vector3(0, 1, 3.2);
+const CAMERA_OFFSET = new Vector3(0, 1.2, 4.2);
 
-type ActionState = "IDLE" | "WALK" | "RUN" | "JUMP" | "FALL" | "LAND";
+type ActionState = "IDLE" | "WALK" | "RUN" | "JUMP" | "JUMP2" | "FALL" | "LAND";
 
 type AnimationConfig = {
   loop: boolean;
@@ -23,6 +24,7 @@ const animationConfig: Record<ActionState, AnimationConfig> = {
   WALK: { loop: true, clampWhenFinished: false },
   RUN: { loop: true, clampWhenFinished: false },
   JUMP: { loop: false, clampWhenFinished: true },
+  JUMP2: { loop: false, clampWhenFinished: true },
   FALL: { loop: false, clampWhenFinished: true },
   LAND: { loop: false, clampWhenFinished: true },
 };
@@ -34,6 +36,7 @@ function getActionState({
   jumpActive,
   runActive,
   isFalling,
+  jumpCount,
 }: {
   isOnGround: boolean;
   wasOnGround: boolean;
@@ -41,13 +44,15 @@ function getActionState({
   jumpActive: boolean;
   runActive: boolean;
   isFalling: boolean;
+  jumpCount: number;
 }): ActionState {
   if (jumpActive && wasOnGround) return "JUMP";
 
   if (isOnGround) {
     if (!wasOnGround) return "LAND";
     if (!isMoving) return "IDLE";
-    return runActive ? "RUN" : "WALK";
+    // want run by default, so swap walk and run
+    return runActive ? "WALK" : "RUN";
   }
 
   return isFalling ? "FALL" : "JUMP";
@@ -55,36 +60,21 @@ function getActionState({
 
 export default function Player({ isPaused }: { isPaused: boolean }) {
   const ecctrl = useRef<EcctrlHandle>(null);
-  const desiredCamPos = useRef(new Vector3());
-  const lookAtPos = useRef(new Vector3());
   const player = useRef<Object3D>(null);
   const prevActionState = useRef<ActionState>("IDLE");
   const prevIsOnGround = useRef(false);
+  const jumpCount = useRef(0);
 
-  const [, getKeys] = useKeyboardControls<Controls>();
+  useCamera(ecctrl, isPaused);
+
+  const [subKeys, getKeys] = useKeyboardControls<Controls>();
   const { scene, animations } = useGLTF("/quigonjinn.glb");
   const { actions, mixer } = useAnimations(animations, player);
 
-  function updateCamera(camera: Camera, delta: number) {
-    if (!ecctrl.current) {
-      return;
-    }
-
-    const target = ecctrl.current.currPos;
-
-    lookAtPos.current.lerp(target, 1 - Math.pow(0.001, delta));
-    desiredCamPos.current.copy(target).add(CAMERA_OFFSET);
-
-    camera.position.lerp(desiredCamPos.current, 1 - Math.pow(0.001, delta));
-    camera.lookAt(lookAtPos.current);
-  }
-
-  useFrame(({ camera }, delta) => {
+  useFrame(() => {
     if (!ecctrl.current || isPaused) {
       return;
     }
-
-    updateCamera(camera, delta);
 
     const { forward, backward, leftward, rightward, jump, run } = getKeys();
     ecctrl.current.setMovement({
@@ -100,6 +90,10 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
       ecctrl.current;
 
     const wasOnGround = prevIsOnGround.current;
+    if (isOnGround && !wasOnGround && jumpCount.current > 0) {
+      jumpCount.current = 0;
+    }
+
     const actionState = getActionState({
       isOnGround,
       wasOnGround,
@@ -107,6 +101,7 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
       jumpActive,
       runActive,
       isFalling,
+      jumpCount: jumpCount.current,
     });
 
     if (actionState !== prevActionState.current) {
@@ -146,6 +141,45 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
     mixer.timeScale = isPaused ? 0 : 1;
   }, [isPaused, mixer]);
 
+  useEffect(() => {
+    return subKeys(({ jump }) => {
+      if (!jump) {
+        return;
+      }
+
+      jumpCount.current++;
+      if (jumpCount.current > 1) {
+        ecctrl.current?.body.applyImpulse(new Vector3(0, 1.2, 0), false);
+      }
+    });
+  }, [subKeys]);
+
+  useFrame(() => {
+    const player = ecctrl.current;
+    if (!player || player.isOnGround) {
+      return;
+    }
+
+    const velocity = player.currLinVel;
+
+    const up = player.upAxis;
+    const verticalVelocity = up.clone().multiplyScalar(velocity.dot(up));
+    const horizontalVelocity = velocity.clone().sub(verticalVelocity);
+
+    const finalVelocity = new Vector3();
+    if (player.isMoving) {
+      finalVelocity
+        .copy(player.inputDir)
+        .multiplyScalar(horizontalVelocity.dot(player.inputDir));
+
+      finalVelocity.add(verticalVelocity);
+    } else {
+      finalVelocity.copy(verticalVelocity);
+    }
+
+    player.body.setLinvel(finalVelocity, true);
+  });
+
   return (
     <>
       <EcctrlAnimationStateController ecctrl={ecctrl} />
@@ -153,10 +187,14 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
         // debug
         ref={ecctrl}
         position={[0, 8, 0]}
-        maxWalkVel={3}
-        maxRunVel={6}
+        maxWalkVel={3.2}
+        maxRunVel={1.6}
         enableToggleRun={false}
-        accDeltaTime={0.5}
+        jumpVel={8}
+        gravityScale={2.5}
+        fallingGravityScale={1.5}
+        accDeltaTime={1}
+        decDeltaTime={1}
       >
         <group ref={player} position={[0, -0.78, 0]} castShadow>
           <primitive object={scene} />

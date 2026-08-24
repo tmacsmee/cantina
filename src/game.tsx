@@ -2,6 +2,7 @@ import {
   Box,
   KeyboardControls,
   Plane,
+  useGLTF,
   type KeyboardControlsEntry,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
@@ -20,12 +21,14 @@ const keyboardMap: KeyboardControlsEntry<Controls>[] = [
 
 export default function Game({ isPaused }: { isPaused: boolean }) {
   return (
-    <Canvas shadows="variance" camera={{ fov: 60 }}>
+    <Canvas shadows="variance" camera={{ fov: 45 }}>
       <Physics paused={isPaused}>
         <KeyboardControls map={keyboardMap}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 5, 0]} intensity={2.5} castShadow />
           {/* <pointLight position={[0, 3, 0]} intensity={5} decay={1} castShadow /> */}
+
+          <Cantina />
 
           <Player isPaused={isPaused} />
 
@@ -43,5 +46,19 @@ export default function Game({ isPaused }: { isPaused: boolean }) {
         </KeyboardControls>
       </Physics>
     </Canvas>
+  );
+}
+
+function Cantina() {
+  const { scene } = useGLTF("/cantina.glb");
+
+  return (
+    <group
+      scale={[3.2, 3.2, -3.2]}
+      rotation-y={Math.PI / 2}
+      position={[0, 0.01, 0]}
+    >
+      <primitive object={scene} />
+    </group>
   );
 }
