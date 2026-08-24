@@ -141,44 +141,31 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
     mixer.timeScale = isPaused ? 0 : 1;
   }, [isPaused, mixer]);
 
-  useEffect(() => {
-    return subKeys(({ jump }) => {
-      if (!jump) {
-        return;
-      }
+  // useFrame(() => {
+  //   const player = ecctrl.current;
+  //   if (!player || player.isOnGround) {
+  //     return;
+  //   }
 
-      jumpCount.current++;
-      if (jumpCount.current > 1) {
-        ecctrl.current?.body.applyImpulse(new Vector3(0, 1.2, 0), false);
-      }
-    });
-  }, [subKeys]);
+  //   const velocity = player.currLinVel;
 
-  useFrame(() => {
-    const player = ecctrl.current;
-    if (!player || player.isOnGround) {
-      return;
-    }
+  //   const up = player.upAxis;
+  //   const verticalVelocity = up.clone().multiplyScalar(velocity.dot(up));
+  //   const horizontalVelocity = velocity.clone().sub(verticalVelocity);
 
-    const velocity = player.currLinVel;
+  //   const finalVelocity = new Vector3();
+  //   if (player.isMoving) {
+  //     finalVelocity
+  //       .copy(player.inputDir)
+  //       .multiplyScalar(horizontalVelocity.dot(player.inputDir));
 
-    const up = player.upAxis;
-    const verticalVelocity = up.clone().multiplyScalar(velocity.dot(up));
-    const horizontalVelocity = velocity.clone().sub(verticalVelocity);
+  //     finalVelocity.add(verticalVelocity);
+  //   } else {
+  //     finalVelocity.copy(verticalVelocity);
+  //   }
 
-    const finalVelocity = new Vector3();
-    if (player.isMoving) {
-      finalVelocity
-        .copy(player.inputDir)
-        .multiplyScalar(horizontalVelocity.dot(player.inputDir));
-
-      finalVelocity.add(verticalVelocity);
-    } else {
-      finalVelocity.copy(verticalVelocity);
-    }
-
-    player.body.setLinvel(finalVelocity, true);
-  });
+  //   player.body.setLinvel(finalVelocity, true);
+  // });
 
   return (
     <>

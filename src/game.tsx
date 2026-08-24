@@ -26,7 +26,13 @@ export default function Game({ isPaused }: { isPaused: boolean }) {
         <KeyboardControls map={keyboardMap}>
           <ambientLight intensity={0.4} />
           <directionalLight position={[0, 5, 0]} intensity={2.5} castShadow />
-          {/* <pointLight position={[0, 3, 0]} intensity={5} decay={1} castShadow /> */}
+          <pointLight position={[2, 3, 2]} intensity={5} decay={1} castShadow />
+          <pointLight
+            position={[-5, 3, -5]}
+            intensity={5}
+            decay={1}
+            castShadow
+          />
 
           <Cantina />
 
