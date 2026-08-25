@@ -1,12 +1,16 @@
 import {
   Box,
+  Environment,
   KeyboardControls,
   Plane,
+  Sphere,
   useGLTF,
   type KeyboardControlsEntry,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics, RigidBody } from "@react-three/rapier";
+import { useEffect } from "react";
+import { Mesh, MeshBasicMaterial, MeshStandardMaterial } from "three";
 import type { Controls } from "../lib/types";
 import Player from "./player";
 
@@ -21,18 +25,11 @@ const keyboardMap: KeyboardControlsEntry<Controls>[] = [
 
 export default function Game({ isPaused }: { isPaused: boolean }) {
   return (
-    <Canvas shadows="percentage" camera={{ fov: 45 }}>
+    <Canvas camera={{ fov: 45 }} flat>
       <Physics paused={isPaused}>
         <KeyboardControls map={keyboardMap}>
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[0, 5, 0]} intensity={2.5} castShadow />
-          <pointLight position={[2, 3, 2]} intensity={5} decay={1} castShadow />
-          <pointLight
-            position={[-5, 3, -5]}
-            intensity={5}
-            decay={1}
-            castShadow
-          />
+          <axesHelper position={[0, 1, 0]} args={[4]} />
+          <Environment preset="warehouse" environmentIntensity={0.3} />
 
           <Cantina />
 
@@ -56,14 +53,35 @@ export default function Game({ isPaused }: { isPaused: boolean }) {
 }
 
 function Cantina() {
-  const { scene } = useGLTF("/cantina.glb");
+  const { scene, materials } = useGLTF("/cantina_baked.glb");
+
+  useEffect(() => {
+    scene.traverse((node) => {
+      if (!(node instanceof Mesh)) {
+        return;
+      }
+      const material = node.material;
+      const basicMaterial = new MeshBasicMaterial({
+        map: material.map,
+        lightMap: material.lightMap,
+        lightMapIntensity: material.lightMapIntensity,
+        vertexColors: material.vertexColors,
+        transparent: material.transparent,
+        opacity: material.opacity,
+        alphaTest: material.alphaTest,
+        alphaMap: material.alphaMap,
+        side: material.side,
+        depthWrite: material.depthWrite,
+        name: material.name,
+      });
+      basicMaterial.userData = material.userData;
+
+      node.material = basicMaterial;
+    });
+  }, [scene, materials]);
 
   return (
-    <group
-      scale={[3.2, 3.2, -3.2]}
-      rotation-y={Math.PI / 2}
-      position={[0, 0.01, 0]}
-    >
+    <group scale={3.2} rotation-y={5.9} position={[0, -3.55, 0]}>
       <primitive object={scene} />
     </group>
   );

@@ -6,11 +6,9 @@ import {
   type EcctrlHandle,
 } from "ecctrl";
 import { useEffect, useRef } from "react";
-import { Camera, LoopOnce, LoopRepeat, Object3D, Vector3 } from "three";
+import { LoopOnce, LoopRepeat, Object3D } from "three";
 import { useCamera } from "../hooks/use-camera";
 import type { Controls } from "../lib/types";
-
-const CAMERA_OFFSET = new Vector3(0, 1.2, 4.2);
 
 type ActionState = "IDLE" | "WALK" | "RUN" | "JUMP" | "JUMP2" | "FALL" | "LAND";
 
@@ -173,7 +171,7 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
       <Ecctrl
         // debug
         ref={ecctrl}
-        position={[0, 8, 0]}
+        position={[0, 20, 0]}
         maxWalkVel={3.2}
         maxRunVel={1.6}
         enableToggleRun={false}
