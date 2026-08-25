@@ -7,7 +7,7 @@ import {
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Physics, RigidBody } from "@react-three/rapier";
-import type { Controls } from "./lib/types";
+import type { Controls } from "../lib/types";
 import Player from "./player";
 
 const keyboardMap: KeyboardControlsEntry<Controls>[] = [
@@ -21,7 +21,7 @@ const keyboardMap: KeyboardControlsEntry<Controls>[] = [
 
 export default function Game({ isPaused }: { isPaused: boolean }) {
   return (
-    <Canvas shadows="variance" camera={{ fov: 45 }}>
+    <Canvas shadows="percentage" camera={{ fov: 45 }}>
       <Physics paused={isPaused}>
         <KeyboardControls map={keyboardMap}>
           <ambientLight intensity={0.4} />

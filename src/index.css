@@ -15,6 +15,7 @@
   /* --font-menu: "Roboto Condensed", sans-serif; */
   --font-menu: "News Gothic", sans-serif;
   --animate-menu: flash 0.2s step-end infinite;
+  --animate-heartbeat: heartbeat 0.5s ease-out infinite;
 
   @keyframes flash {
     0% {
@@ -22,6 +23,15 @@
     }
     50% {
       color: #3ddad2;
+    }
+  }
+
+  @keyframes heartbeat {
+    0% {
+      scale: 1;
+    }
+    5% {
+      scale: 1.2;
     }
   }
 }

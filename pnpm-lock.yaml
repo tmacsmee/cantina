@@ -41,6 +41,9 @@ importers:
       three:
         specifier: ^0.185.1
         version: 0.185.1
+      use-sound:
+        specifier: ^5.0.0
+        version: 5.0.0(react@19.2.8)
     devDependencies:
       '@babel/core':
         specifier: ^7.29.7
@@ -51,6 +54,9 @@ importers:
       '@types/babel__core':
         specifier: ^7.20.5
         version: 7.20.5
+      '@types/howler':
+        specifier: ^2.2.13
+        version: 2.2.13
       '@types/node':
         specifier: ^24.13.3
         version: 24.13.3
@@ -623,6 +629,9 @@ packages:
   '@types/draco3d@1.4.10':
     resolution: {integrity: sha512-AX22jp8Y7wwaBgAixaSvkoG4M/+PlAcm3Qs4OW8yT9DM4xUpWKeFhLueTAyZF39pviAdcDdeJoACapiAceqNcw==}
 
+  '@types/howler@2.2.13':
+    resolution: {integrity: sha512-40+EBjqIHHrC4VShlz/7i0lBUsE3QkgzZinQQji74Hd8sBkJZUBaT7LWFLK6rcabsDOOQpoMbEJvtaFQwxOu/g==}
+
   '@types/node@24.13.3':
     resolution: {integrity: sha512-Dh8vAsV36ig5wa9OX4pXvMc9D3Veibfw2wix0CUwYODLD8nkj9UsLjASr49nPg+2eKzxhBV+v7L8pXvT4e639Q==}
 
@@ -796,6 +805,9 @@ packages:
 
   hls.js@1.7.1:
     resolution: {integrity: sha512-DlzIkeBAS9IIQ432k3BUf3HlwbsR0+trB1i2lDdN2gUkNkrehFurh0/48M5c1/EjlDkdGng1gwZIpwyPxvdZ/g==}
+
+  howler@2.2.4:
+    resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -1224,6 +1236,11 @@ packages:
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
+
+  use-sound@5.0.0:
+    resolution: {integrity: sha512-MNHT3FFC5HxNCrgZtrnpIMJI2cw/0D2xismcrtyht8BTuF5FhFhb57xO/jlQr2xJaFrc/0btzRQvGyHQwB7PVA==}
+    peerDependencies:
+      react: '>=16.8'
 
   use-sync-external-store@1.6.0:
     resolution: {integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==}
@@ -1768,6 +1785,8 @@ snapshots:
 
   '@types/draco3d@1.4.10': {}
 
+  '@types/howler@2.2.13': {}
+
   '@types/node@24.13.3':
     dependencies:
       undici-types: 7.18.2
@@ -1913,6 +1932,8 @@ snapshots:
   graceful-fs@4.2.11: {}
 
   hls.js@1.7.1: {}
+
+  howler@2.2.4: {}
 
   ieee754@1.2.1: {}
 
@@ -2228,6 +2249,11 @@ snapshots:
       browserslist: 4.28.8
       escalade: 3.2.0
       picocolors: 1.1.1
+
+  use-sound@5.0.0(react@19.2.8):
+    dependencies:
+      howler: 2.2.4
+      react: 19.2.8
 
   use-sync-external-store@1.6.0(react@19.2.8):
     dependencies:

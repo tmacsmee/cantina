@@ -7,8 +7,8 @@ import {
 } from "ecctrl";
 import { useEffect, useRef } from "react";
 import { Camera, LoopOnce, LoopRepeat, Object3D, Vector3 } from "three";
-import { useCamera } from "./hooks/use-camera";
-import type { Controls } from "./lib/types";
+import { useCamera } from "../hooks/use-camera";
+import type { Controls } from "../lib/types";
 
 const CAMERA_OFFSET = new Vector3(0, 1.2, 4.2);
 
