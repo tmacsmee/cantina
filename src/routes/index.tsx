@@ -1,3 +1,4 @@
+import { NavigationMenu } from '@base-ui/react/navigation-menu';
 import {
   createFileRoute,
   Link,
@@ -18,13 +19,15 @@ const menuItems: { text: string; to: string }[] = [
 function RouteComponent() {
   return (
     <main className="h-screen bg-black">
-      <ul className="font-menu flex flex-col gap-y-2 text-center text-4xl font-bold tracking-wide text-[#1a72c8] [-webkit-text-stroke:5px_rgba(0,0,0,0.75)] [paint-order:stroke_fill]">
-        {menuItems.map(({ text, to }) => (
-          <MenuItem key={text} to={to}>
-            {text}
-          </MenuItem>
-        ))}
-      </ul>
+      <NavigationMenu.Root>
+        <NavigationMenu.List className="font-menu flex flex-col gap-y-2 text-center text-4xl font-bold tracking-wide text-[#1a72c8] [-webkit-text-stroke:5px_rgba(0,0,0,0.75)] [paint-order:stroke_fill]">
+          {menuItems.map(({ text, to }) => (
+            <MenuItem key={text} to={to}>
+              {text}
+            </MenuItem>
+          ))}
+        </NavigationMenu.List>
+      </NavigationMenu.Root>
     </main>
   );
 }
@@ -37,7 +40,7 @@ function MenuItem({ children, ...props }: LinkComponentProps) {
   }
 
   return (
-    <li>
+    <NavigationMenu.Item>
       <Link
         {...props}
         className="focus:animate-menu focus:outline-none"
@@ -45,6 +48,6 @@ function MenuItem({ children, ...props }: LinkComponentProps) {
       >
         {children}
       </Link>
-    </li>
+    </NavigationMenu.Item>
   );
 }
