@@ -1,28 +1,33 @@
-import { useEffect, useState } from "react";
-import { useSound } from "use-sound";
-import menuBack from "./assets/audio/menu-back.wav";
-import menuSelect from "./assets/audio/menu-select.wav";
-import Game from "./components/game";
-import Hud from "./components/hud";
-import Menu from "./components/menu";
+import { createFileRoute } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
+import { useSound } from 'use-sound';
+import menuBack from '../assets/audio/menu-back.wav';
+import menuSelect from '../assets/audio/menu-select.wav';
+import Game from '../components/game';
+import Hud from '../components/hud';
+import Menu from '../components/menu';
 
-export default function App() {
+export const Route = createFileRoute('/game')({
+  component: RouteComponent,
+});
+
+function RouteComponent() {
   const [isPaused, setIsPaused] = useState(false);
   const [playMenuSelect] = useSound(menuSelect);
   const [playMenuBack] = useSound(menuBack);
 
   useEffect(() => {
     function handleEscapeKey(event: KeyboardEvent) {
-      if (event.key === "Escape" && !isPaused) {
+      if (event.key === 'Escape' && !isPaused) {
         playMenuSelect();
         setIsPaused((prev) => !prev);
       }
     }
 
-    window.addEventListener("keydown", handleEscapeKey);
+    window.addEventListener('keydown', handleEscapeKey);
 
     return () => {
-      window.removeEventListener("keydown", handleEscapeKey);
+      window.removeEventListener('keydown', handleEscapeKey);
     };
   }, [isPaused, playMenuSelect]);
 
