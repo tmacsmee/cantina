@@ -5,7 +5,7 @@ import menuBack from '../assets/audio/menu-back.wav';
 import menuSelect from '../assets/audio/menu-select.wav';
 import Game from '../components/game';
 import Hud from '../components/hud';
-import Menu from '../components/menu';
+import Menu from '../components/pause-menu';
 
 export const Route = createFileRoute('/game')({
   component: RouteComponent,

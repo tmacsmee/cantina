@@ -1,34 +1,17 @@
-import { Dialog } from '@base-ui/react/dialog';
-import { Link } from '@tanstack/react-router';
-import {
-  useRef,
-  useState,
-  type ComponentPropsWithRef,
-  type ElementType,
-  type KeyboardEvent,
-  type ReactElement,
-  type ReactNode,
-} from 'react';
-import { useSound } from 'use-sound';
+import { mergeProps, NavigationMenu, useRender } from '@base-ui/react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
+import useSound from 'use-sound';
 import menuMove from '../assets/audio/menu-move.wav';
+import menuSelect from '../assets/audio/menu-select.wav';
 
-const menuItems: { text: string; as?: 'close' | 'link'; to?: '/' }[] = [
-  { text: 'Resume', as: 'close' },
-  { text: 'Options' },
-  { text: 'Extras' },
-  { text: 'Quit', as: 'link', to: '/' },
-];
-
-export default function Menu({
-  open,
-  onOpenChange,
-}: {
-  open: boolean;
-  onOpenChange: (isOpen: boolean) => void;
-}) {
+export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
   const menuItemRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    menuItemRefs.current[0]?.focus();
+  }, []);
 
   function moveFocus(index: number) {
     setActiveIndex(index);
@@ -40,71 +23,50 @@ export default function Menu({
       event.preventDefault();
       const increment = event.key === 'ArrowUp' ? -1 : 1;
 
-      const nextIndex =
-        (activeIndex + increment + menuItems.length) % menuItems.length;
+      let nextIndex = activeIndex + increment;
+      if (nextIndex >= menuItems.length || nextIndex < 0) {
+        nextIndex = activeIndex;
+      }
       moveFocus(nextIndex);
     }
   }
 
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange}>
-      <Dialog.Portal>
-        <Dialog.Popup className="fixed inset-0 flex items-center justify-center">
-          <Dialog.Title className="sr-only">Pause menu</Dialog.Title>
-          <Dialog.Description className="sr-only">
-            Options to resume the game, change settings, view extras, or quit
-            the game.
-          </Dialog.Description>
-          <ul className="font-menu flex flex-col gap-y-2 text-center text-4xl font-bold tracking-wide text-[#1a72c8] [-webkit-text-stroke:5px_rgba(0,0,0,0.75)] [paint-order:stroke_fill]">
-            {menuItems.map(({ text, as }, index) => (
-              <MenuItem
-                ref={(item) => {
-                  menuItemRefs.current[index] = item;
-                }}
-                key={index}
-                as={as}
-                to="/"
-                tabIndex={activeIndex === index ? 0 : -1}
-                onKeyDown={handleKeyDown}
-              >
-                {text}
-              </MenuItem>
-            ))}
-          </ul>
-        </Dialog.Popup>
-      </Dialog.Portal>
-    </Dialog.Root>
+    <NavigationMenu.Root>
+      <NavigationMenu.List className="font-menu flex flex-col gap-y-2 text-center text-4xl font-bold tracking-wide text-[#1a72c8] [-webkit-text-stroke:5px_rgba(0,0,0,0.75)] [paint-order:stroke_fill]">
+        {menuItems.map((props, index) => (
+          <MenuItem
+            key={index}
+            ref={(item) => {
+              menuItemRefs.current[index] = item;
+            }}
+            tabIndex={activeIndex === index ? 0 : -1}
+            onKeyDown={handleKeyDown}
+            {...props}
+          />
+        ))}
+      </NavigationMenu.List>
+    </NavigationMenu.Root>
   );
 }
 
-type MenuItemProps = ComponentPropsWithRef<'button'> & {
-  as: 'close' | 'link';
-  to: string;
-};
+export type MenuItemProps = useRender.ComponentProps<'button'>;
 
-function MenuItem({ as, children, ...props }: MenuItemProps) {
+export function MenuItem({ render, ...props }: MenuItemProps) {
   const [playMenuMove] = useSound(menuMove);
+  const [playMenuSelect] = useSound(menuSelect);
 
-  function handleFocus() {
-    playMenuMove();
-  }
+  const defaultProps: useRender.ElementProps<'button'> = {
+    className: 'focus:animate-menu focus:outline-none',
+    onFocus: () => playMenuMove(),
+    onClick: () => playMenuSelect(),
+  };
 
-  let Comp: ElementType = 'button';
-  if (as === 'close') {
-    Comp = Dialog.Close;
-  } else if (as === 'link') {
-    Comp = Link;
-  }
+  const element = useRender({
+    defaultTagName: 'button',
+    props: mergeProps<'button'>(defaultProps, props),
+    render,
+  });
 
-  return (
-    <li>
-      <Comp
-        {...props}
-        className="focus:animate-menu focus:outline-none"
-        onFocus={handleFocus}
-      >
-        {children}
-      </Comp>
-    </li>
-  );
+  return <li>{element}</li>;
 }
