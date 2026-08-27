@@ -8,13 +8,11 @@ export const Route = createFileRoute('/_menu/')({
 function MainMenu() {
   const menuItems: MenuItemProps[] = [
     {
-      kind: 'link',
-      to: '/play',
+      render: <Link to="/play" />,
       children: 'New Game',
     },
     {
-      kind: 'link',
-      to: '/options',
+      render: <Link to="/options" />,
       children: 'Options',
     },
   ];

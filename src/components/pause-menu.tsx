@@ -2,13 +2,6 @@ import { Dialog } from '@base-ui/react/dialog';
 import { Link } from '@tanstack/react-router';
 import Menu, { type MenuItemProps } from './menu';
 
-const menuItems: MenuItemProps[] = [
-  { children: 'Resume', render: <Dialog.Close /> },
-  { children: 'Options' },
-  { children: 'Extras' },
-  { children: 'Quit', render: <Link to="/" /> },
-];
-
 export default function PauseMenu({
   open,
   onOpenChange,
@@ -16,6 +9,13 @@ export default function PauseMenu({
   open: boolean;
   onOpenChange: (isOpen: boolean) => void;
 }) {
+  const menuItems: MenuItemProps[] = [
+    { children: 'Resume' },
+    { children: 'Options' },
+    { children: 'Extras' },
+    { children: 'Quit', render: <Link to="/" /> },
+  ];
+
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>

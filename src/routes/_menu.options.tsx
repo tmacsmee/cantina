@@ -1,6 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useState, type KeyboardEvent } from 'react';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
+import {
+  useEffect,
+  useState,
+  type KeyboardEvent as ReactKeyboardEvent,
+} from 'react';
 import useSound from 'use-sound';
+import menuBack from '../assets/audio/menu-back.wav';
 import menuMove from '../assets/audio/menu-move.wav';
 import type { MenuItemProps } from '../components/menu';
 import Menu from '../components/menu';
@@ -15,8 +20,26 @@ function Options() {
   const [volume, setVolume] = useState(5);
   const [isMusicOn, setIsMusicOn] = useState(true);
   const [playMenuMove] = useSound(menuMove);
+  const [playMenuBack] = useSound(menuBack);
 
-  function handleVolumeKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key !== 'Escape') {
+        return;
+      }
+
+      navigate({ to: '/' });
+      playMenuBack();
+    }
+
+    document.addEventListener('keydown', handleEscape);
+
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [navigate, playMenuBack]);
+
+  function handleVolumeKeyDown(event: ReactKeyboardEvent<HTMLButtonElement>) {
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
       const increment = event.key === 'ArrowRight' ? 1 : -1;
       const nextVolume = Math.max(0, Math.min(MAX_VOLUME, volume + increment));
@@ -32,21 +55,18 @@ function Options() {
 
   const menuItems: MenuItemProps[] = [
     {
-      kind: 'button',
       children: 'Audio Volume: ' + volume,
       onKeyDown: handleVolumeKeyDown,
     },
     {
-      kind: 'button',
-      children: 'Music: ' + (isMusicOn ? 'On' : 'Off'),
+      children: `Music: ${isMusicOn ? 'On' : 'Off'}`,
       onClick: () => {
         setIsMusicOn((prev) => !prev);
       },
     },
     {
-      kind: 'link',
+      render: <Link to="/" />,
       children: 'Back',
-      to: '/',
     },
   ];
 
