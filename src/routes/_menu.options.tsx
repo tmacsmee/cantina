@@ -1,14 +1,8 @@
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
-import {
-  useEffect,
-  useState,
-  type KeyboardEvent as ReactKeyboardEvent,
-} from 'react';
-import useSound from 'use-sound';
-import menuBack from '../assets/audio/menu-back.wav';
-import menuMove from '../assets/audio/menu-move.wav';
+import { useEffect, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import type { MenuItemProps } from '../components/menu';
 import Menu from '../components/menu';
+import { useSounds } from '../components/sound-context-provider';
 
 export const Route = createFileRoute('/_menu/options')({
   component: Options,
@@ -17,10 +11,14 @@ export const Route = createFileRoute('/_menu/options')({
 const MAX_VOLUME = 10;
 
 function Options() {
-  const [volume, setVolume] = useState(5);
-  const [isMusicOn, setIsMusicOn] = useState(true);
-  const [playMenuMove] = useSound(menuMove);
-  const [playMenuBack] = useSound(menuBack);
+  const {
+    isMusicOn,
+    setIsMusicOn,
+    volume,
+    setVolume,
+    menuMoveSound: [playMenuMove],
+    menuBackSound: [playMenuBack],
+  } = useSounds();
 
   const navigate = useNavigate();
 

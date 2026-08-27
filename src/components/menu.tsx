@@ -1,17 +1,17 @@
 import { mergeProps, useRender } from '@base-ui/react';
 import type { KeyboardEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import useSound from 'use-sound';
-import menuMove from '../assets/audio/menu-move.wav';
-import menuSelect from '../assets/audio/menu-select.wav';
+import { useSounds } from './sound-context-provider';
 
 export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
   const menuItemRefs = useRef<HTMLButtonElement[]>([]);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const [playMenuMove] = useSound(menuMove);
-  const [playMenuSelect] = useSound(menuSelect);
+  const {
+    menuMoveSound: [playMenuMove],
+    menuSelectSound: [playMenuSelect],
+  } = useSounds();
 
   useEffect(() => {
     menuItemRefs.current[0].focus();

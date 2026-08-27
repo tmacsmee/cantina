@@ -1,11 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
-import { useSound } from 'use-sound';
-import menuBack from '../assets/audio/menu-back.wav';
-import menuSelect from '../assets/audio/menu-select.wav';
 import Game from '../components/game';
 import Hud from '../components/hud';
 import Menu from '../components/pause-menu';
+import { useSounds } from '../components/sound-context-provider';
 
 export const Route = createFileRoute('/play')({
   component: RouteComponent,
@@ -13,8 +11,10 @@ export const Route = createFileRoute('/play')({
 
 function RouteComponent() {
   const [isPaused, setIsPaused] = useState(false);
-  const [playMenuSelect] = useSound(menuSelect);
-  const [playMenuBack] = useSound(menuBack);
+  const {
+    menuSelectSound: [playMenuSelect],
+    menuBackSound: [playMenuBack],
+  } = useSounds();
 
   useEffect(() => {
     function handleEscapeKey(event: KeyboardEvent) {
