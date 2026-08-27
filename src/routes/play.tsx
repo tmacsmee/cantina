@@ -7,7 +7,7 @@ import Game from '../components/game';
 import Hud from '../components/hud';
 import Menu from '../components/pause-menu';
 
-export const Route = createFileRoute('/game')({
+export const Route = createFileRoute('/play')({
   component: RouteComponent,
 });
 

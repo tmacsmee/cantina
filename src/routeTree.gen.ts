@@ -9,68 +9,109 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as GameRouteImport } from './routes/game'
+import { Route as MenuRouteImport } from './routes/_menu'
+import { Route as PlayRouteImport } from './routes/play'
+import { Route as MenuIndexRouteImport } from './routes/_menu.index'
+import { Route as MenuOptionsRouteImport } from './routes/_menu.options'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const MenuRoute = MenuRouteImport.update({
+  id: '/_menu',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GameRoute = GameRouteImport.update({
-  id: '/game',
-  path: '/game',
+const PlayRoute = PlayRouteImport.update({
+  id: '/play',
+  path: '/play',
   getParentRoute: () => rootRouteImport,
+} as any)
+const MenuIndexRoute = MenuIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MenuRoute,
+} as any)
+const MenuOptionsRoute = MenuOptionsRouteImport.update({
+  id: '/options',
+  path: '/options',
+  getParentRoute: () => MenuRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/game': typeof GameRoute
+  '/': typeof MenuIndexRoute
+  '/play': typeof PlayRoute
+  '/options': typeof MenuOptionsRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/game': typeof GameRoute
+  '/play': typeof PlayRoute
+  '/options': typeof MenuOptionsRoute
+  '/': typeof MenuIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/game': typeof GameRoute
+  '/_menu': typeof MenuRouteWithChildren
+  '/play': typeof PlayRoute
+  '/_menu/options': typeof MenuOptionsRoute
+  '/_menu/': typeof MenuIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/game'
+  fullPaths: '/' | '/play' | '/options'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/game'
-  id: '__root__' | '/' | '/game'
+  to: '/play' | '/options' | '/'
+  id: '__root__' | '/_menu' | '/play' | '/_menu/options' | '/_menu/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  GameRoute: typeof GameRoute
+  MenuRoute: typeof MenuRouteWithChildren
+  PlayRoute: typeof PlayRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
+    '/_menu': {
+      id: '/_menu'
+      path: ''
       fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+      preLoaderRoute: typeof MenuRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/game': {
-      id: '/game'
-      path: '/game'
-      fullPath: '/game'
-      preLoaderRoute: typeof GameRouteImport
+    '/play': {
+      id: '/play'
+      path: '/play'
+      fullPath: '/play'
+      preLoaderRoute: typeof PlayRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_menu/': {
+      id: '/_menu/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof MenuIndexRouteImport
+      parentRoute: typeof MenuRoute
+    }
+    '/_menu/options': {
+      id: '/_menu/options'
+      path: '/options'
+      fullPath: '/options'
+      preLoaderRoute: typeof MenuOptionsRouteImport
+      parentRoute: typeof MenuRoute
     }
   }
 }
 
+interface MenuRouteChildren {
+  MenuOptionsRoute: typeof MenuOptionsRoute
+  MenuIndexRoute: typeof MenuIndexRoute
+}
+
+const MenuRouteChildren: MenuRouteChildren = {
+  MenuOptionsRoute: MenuOptionsRoute,
+  MenuIndexRoute: MenuIndexRoute,
+}
+
+const MenuRouteWithChildren = MenuRoute._addFileChildren(MenuRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  GameRoute: GameRoute,
+  MenuRoute: MenuRouteWithChildren,
+  PlayRoute: PlayRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
