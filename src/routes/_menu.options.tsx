@@ -53,7 +53,7 @@ function Options() {
 
   const menuItems: MenuItemProps[] = [
     {
-      children: 'Audio Volume: ' + volume,
+      children: `Audio Volume: ${volume} ⁄ 10`,
       onKeyDown: handleVolumeKeyDown,
     },
     {

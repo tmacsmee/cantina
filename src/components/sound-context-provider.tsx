@@ -40,7 +40,7 @@ export default function SoundContextProvider({
 }: {
   children: ReactNode;
 }) {
-  const [volume, setVolume] = useState(10);
+  const [volume, setVolume] = useState(5);
   const [isMusicOn, setIsMusicOn] = useState(true);
 
   console.log(volume);

@@ -16,7 +16,7 @@
   --font-menu: 'News Gothic', sans-serif;
   --animate-menu: flash 0.2s step-end infinite;
   --animate-heartbeat: heartbeat 0.5s ease-out infinite;
-  --animate-starfield: background-scroll 100s linear infinite;
+  --animate-starfield: background-scroll 120s linear infinite;
 
   @keyframes flash {
     0% {
