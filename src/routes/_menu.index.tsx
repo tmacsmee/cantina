@@ -5,11 +5,19 @@ export const Route = createFileRoute('/_menu/')({
   component: MainMenu,
 });
 
-const menuItems: MenuItemProps[] = [
-  { children: 'New Game', render: <Link to="/play" /> },
-  { children: 'Options', render: <Link to="/options" /> },
-];
-
 function MainMenu() {
+  const menuItems: MenuItemProps[] = [
+    {
+      kind: 'link',
+      to: '/play',
+      children: 'New Game',
+    },
+    {
+      kind: 'link',
+      to: '/options',
+      children: 'Options',
+    },
+  ];
+
   return <Menu menuItems={menuItems} />;
 }

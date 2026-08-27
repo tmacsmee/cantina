@@ -1,5 +1,7 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
-import { useState } from 'react';
+import { createFileRoute } from '@tanstack/react-router';
+import { useState, type KeyboardEvent } from 'react';
+import useSound from 'use-sound';
+import menuMove from '../assets/audio/menu-move.wav';
 import type { MenuItemProps } from '../components/menu';
 import Menu from '../components/menu';
 
@@ -7,17 +9,46 @@ export const Route = createFileRoute('/_menu/options')({
   component: Options,
 });
 
-const menuItems: MenuItemProps[] = [
-  { children: 'Audio Volume: 2/10', render: <AudioVolume /> },
-  { children: 'Options', render: <Link to="/options" /> },
-];
+const MAX_VOLUME = 10;
 
 function Options() {
-  return <Menu menuItems={menuItems} />;
-}
-
-function AudioVolume() {
   const [volume, setVolume] = useState(5);
+  const [isMusicOn, setIsMusicOn] = useState(true);
+  const [playMenuMove] = useSound(menuMove);
 
-  return <button onClick={() => setVolume((prev) => prev + 1)} />;
+  function handleVolumeKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      const increment = event.key === 'ArrowRight' ? 1 : -1;
+      const nextVolume = Math.max(0, Math.min(MAX_VOLUME, volume + increment));
+
+      if (nextVolume === volume) {
+        return;
+      }
+
+      playMenuMove();
+      setVolume(nextVolume);
+    }
+  }
+
+  const menuItems: MenuItemProps[] = [
+    {
+      kind: 'button',
+      children: 'Audio Volume: ' + volume,
+      onKeyDown: handleVolumeKeyDown,
+    },
+    {
+      kind: 'button',
+      children: 'Music: ' + (isMusicOn ? 'On' : 'Off'),
+      onClick: () => {
+        setIsMusicOn((prev) => !prev);
+      },
+    },
+    {
+      kind: 'link',
+      children: 'Back',
+      to: '/',
+    },
+  ];
+
+  return <Menu menuItems={menuItems} />;
 }
