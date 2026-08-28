@@ -1,29 +1,34 @@
-import { useFrame } from "@react-three/fiber";
-import type { EcctrlHandle } from "ecctrl";
-import { useRef, type RefObject } from "react";
-import { Camera, Vector3 } from "three";
+import { useFrame } from '@react-three/fiber';
+import type { BVHEcctrlApi } from 'bvhecctrl';
+import { type RefObject } from 'react';
+import { Camera, Vector3 } from 'three';
 
-const CAMERA_OFFSET = new Vector3(0, 1.2, 4.2);
+const CAMERA_ORIGIN = new Vector3(17, 2, 15);
+const CAMERA_DISTANCE = 6;
+
+const viewDirection = new Vector3();
+const desiredCamPos = new Vector3();
+const lookAtPos = new Vector3();
 
 export function useCamera(
-  ecctrl: RefObject<EcctrlHandle | null>,
+  ecctrl: RefObject<BVHEcctrlApi | null>,
   isPaused: boolean,
 ) {
-  const desiredCamPos = useRef(new Vector3());
-  const lookAtPos = useRef(new Vector3());
-
   function updateCamera(camera: Camera, delta: number) {
-    if (!ecctrl.current) {
+    if (!ecctrl.current?.group) {
       return;
     }
 
-    const target = ecctrl.current.currPos;
+    const target = ecctrl.current.group.position;
+    viewDirection.copy(target).sub(CAMERA_ORIGIN).setY(0).normalize();
+    desiredCamPos
+      .copy(target)
+      .addScaledVector(viewDirection, -CAMERA_DISTANCE)
+      .setY(2.6);
 
-    lookAtPos.current.lerp(target, 1 - Math.pow(0.001, delta));
-    desiredCamPos.current.copy(target).add(CAMERA_OFFSET).setY(2);
-
-    camera.position.lerp(desiredCamPos.current, 1 - Math.pow(0.001, delta));
-    camera.lookAt(lookAtPos.current);
+    lookAtPos.lerp(target, 1 - Math.pow(0.001, delta));
+    camera.position.lerp(desiredCamPos, 1 - Math.pow(0.001, delta));
+    camera.lookAt(lookAtPos);
   }
 
   useFrame(({ camera }, delta) => {

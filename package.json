@@ -17,6 +17,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-router": "^1.170.32",
     "@types/three": "^0.185.4",
+    "bvhecctrl": "^0.0.18",
     "ecctrl": "^2.0.1",
     "motion": "^13.1.1",
     "react": "^19.2.8",
