@@ -25,25 +25,9 @@ type SoundContext = {
 
 export const SoundContext = createContext<SoundContext | undefined>(undefined);
 
-export function useSounds() {
-  const context = useContext(SoundContext);
-
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-
-  return context;
-}
-
-export default function SoundContextProvider({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function SoundProvider({ children }: { children: ReactNode }) {
   const [volume, setVolume] = useState(5);
   const [isMusicOn, setIsMusicOn] = useState(true);
-
-  console.log(volume);
 
   const scaledVolume = volume / 10;
   const menuMoveSound = useSound(menuMove, { volume: scaledVolume });
@@ -65,4 +49,14 @@ export default function SoundContextProvider({
       {children}
     </SoundContext.Provider>
   );
+}
+
+export function useSounds() {
+  const context = useContext(SoundContext);
+
+  if (context === undefined) {
+    throw new Error('useSounds must be used within a SoundProvider');
+  }
+
+  return context;
 }

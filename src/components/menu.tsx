@@ -1,7 +1,8 @@
 import { mergeProps, useRender } from '@base-ui/react';
 import type { KeyboardEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { useSounds } from './sound-context-provider';
+import ScreenWipeProvider from './screen-wipe-provider';
+import { useSounds } from './sound-provider';
 
 export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
   const menuItemRefs = useRef<HTMLButtonElement[]>([]);

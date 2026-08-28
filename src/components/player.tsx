@@ -1,16 +1,16 @@
-import { useAnimations, useGLTF, useKeyboardControls } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useAnimations, useGLTF, useKeyboardControls } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import {
   Ecctrl,
   EcctrlAnimationStateController,
   type EcctrlHandle,
-} from "ecctrl";
-import { useEffect, useRef } from "react";
-import { LoopOnce, LoopRepeat, Object3D } from "three";
-import { useCamera } from "../hooks/use-camera";
-import type { Controls } from "../lib/types";
+} from 'ecctrl';
+import { useEffect, useRef } from 'react';
+import { LoopOnce, LoopRepeat, Object3D } from 'three';
+import { useCamera } from '../hooks/use-camera';
+import type { Controls } from '../lib/types';
 
-type ActionState = "IDLE" | "WALK" | "RUN" | "JUMP" | "JUMP2" | "FALL" | "LAND";
+type ActionState = 'IDLE' | 'WALK' | 'RUN' | 'JUMP' | 'JUMP2' | 'FALL' | 'LAND';
 
 type AnimationConfig = {
   loop: boolean;
@@ -44,29 +44,29 @@ function getActionState({
   isFalling: boolean;
   jumpCount: number;
 }): ActionState {
-  if (jumpActive && wasOnGround) return "JUMP";
+  if (jumpActive && wasOnGround) return 'JUMP';
 
   if (isOnGround) {
-    if (!wasOnGround) return "LAND";
-    if (!isMoving) return "IDLE";
+    if (!wasOnGround) return 'LAND';
+    if (!isMoving) return 'IDLE';
     // want run by default, so swap walk and run
-    return runActive ? "WALK" : "RUN";
+    return runActive ? 'WALK' : 'RUN';
   }
 
-  return isFalling ? "FALL" : "JUMP";
+  return isFalling ? 'FALL' : 'JUMP';
 }
 
 export default function Player({ isPaused }: { isPaused: boolean }) {
   const ecctrl = useRef<EcctrlHandle>(null);
   const player = useRef<Object3D>(null);
-  const prevActionState = useRef<ActionState>("IDLE");
+  const prevActionState = useRef<ActionState>('IDLE');
   const prevIsOnGround = useRef(false);
   const jumpCount = useRef(0);
 
   useCamera(ecctrl, isPaused);
 
   const [subKeys, getKeys] = useKeyboardControls<Controls>();
-  const { scene, animations } = useGLTF("/quigonjinn.glb");
+  const { scene, animations } = useGLTF('/quigonjinn.glb');
   const { actions, mixer } = useAnimations(animations, player);
 
   useFrame(() => {
@@ -169,9 +169,9 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
     <>
       <EcctrlAnimationStateController ecctrl={ecctrl} />
       <Ecctrl
-        // debug
+        debug
         ref={ecctrl}
-        position={[0, 20, 0]}
+        position={[0, 3, 0]}
         maxWalkVel={3.2}
         maxRunVel={1.6}
         enableToggleRun={false}

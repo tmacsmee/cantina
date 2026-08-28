@@ -1,11 +1,14 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router';
-import SoundContextProvider from '../components/sound-context-provider';
+import ScreenWipeProvider from '../components/screen-wipe-provider';
+import SoundProvider from '../components/sound-provider';
 
 function RootLayout() {
   return (
-    <SoundContextProvider>
-      <Outlet />
-    </SoundContextProvider>
+    <SoundProvider>
+      <ScreenWipeProvider>
+        <Outlet />
+      </ScreenWipeProvider>
+    </SoundProvider>
   );
 }
 
