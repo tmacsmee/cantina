@@ -10,6 +10,7 @@ import useSound from 'use-sound';
 import menuBack from '../assets/audio/menu-back.wav';
 import menuMove from '../assets/audio/menu-move.wav';
 import menuSelect from '../assets/audio/menu-select.wav';
+import titleMusic from '../assets/audio/title.ogg';
 
 type Sound = ReturnType<typeof useSound>;
 
@@ -21,6 +22,7 @@ type SoundContext = {
   menuMoveSound: Sound;
   menuSelectSound: Sound;
   menuBackSound: Sound;
+  titleSound: Sound;
 };
 
 export const SoundContext = createContext<SoundContext | undefined>(undefined);
@@ -33,6 +35,9 @@ export default function SoundProvider({ children }: { children: ReactNode }) {
   const menuMoveSound = useSound(menuMove, { volume: scaledVolume });
   const menuSelectSound = useSound(menuSelect, { volume: scaledVolume });
   const menuBackSound = useSound(menuBack, { volume: scaledVolume });
+  const titleSound = useSound(titleMusic, {
+    volume: isMusicOn ? scaledVolume : 0,
+  });
 
   return (
     <SoundContext.Provider
@@ -44,6 +49,7 @@ export default function SoundProvider({ children }: { children: ReactNode }) {
         menuMoveSound,
         menuSelectSound,
         menuBackSound,
+        titleSound,
       }}
     >
       {children}

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
 @font-face {
   font-family: 'News Gothic';
@@ -9,16 +10,27 @@
 
 @theme {
   --font-menu: 'News Gothic', sans-serif;
-  --animate-menu: flash 0.2s step-end infinite;
+  --animate-menu: menu-flash 0.2s step-end infinite;
   --animate-heartbeat: heartbeat 0.5s ease-out infinite;
   --animate-starfield: background-scroll 120s linear infinite;
+  --animate-splash-screen: splash-screen 5s 1s;
+  --animate-start-text: start-text-flash 1s step-end infinite;
 
-  @keyframes flash {
+  @keyframes menu-flash {
     0% {
       color: #8200ff;
     }
     50% {
       color: #00ffff;
+    }
+  }
+
+  @keyframes start-text-flash {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
     }
   }
 
@@ -40,8 +52,29 @@
         calc(var(--starfield-width) * -1);
     }
   }
+
+  @keyframes splash-screen {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 }
 
 .root {
   isolation: isolate;
+}
+
+.text-stroke {
+  -webkit-text-stroke: var(--text-stroke-width)
+    color-mix(currentColor 30%, black);
+  paint-order: stroke fill;
 }
