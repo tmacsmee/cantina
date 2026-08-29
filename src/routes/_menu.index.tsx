@@ -1,6 +1,7 @@
 import { useGLTF } from '@react-three/drei';
 import { createFileRoute, Link, useRouter } from '@tanstack/react-router';
 import { useEffect } from 'react';
+import titleUrl from '../assets/title.svg';
 import Menu, { type MenuItemProps } from '../components/menu';
 import { useScreenWipe } from '../components/screen-wipe-provider';
 
@@ -29,5 +30,10 @@ function MainMenu() {
     },
   ];
 
-  return <Menu menuItems={menuItems} />;
+  return (
+    <div className="flex flex-col">
+      <img src={titleUrl} className="h-70" />
+      <Menu menuItems={menuItems} />;
+    </div>
+  );
 }
