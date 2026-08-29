@@ -1,33 +1,26 @@
 import { useGLTF } from '@react-three/drei';
-import { createFileRoute, Link, useRouter } from '@tanstack/react-router';
-import { useEffect, useRef, useState } from 'react';
+import {
+  createFileRoute,
+  Link,
+  useNavigate,
+  useRouter,
+} from '@tanstack/react-router';
+import { useEffect } from 'react';
 import titleUrl from '../assets/title.svg';
 import Menu, { type MenuItemProps } from '../components/menu';
-import { useScreenWipe } from '../components/screen-wipe-provider';
 import { useSounds } from '../components/sound-provider';
-import SplashScreen from '../components/splash-screen';
+import { SplashScreen } from '../components/splash-provider';
 
 export const Route = createFileRoute('/_menu/')({
   component: MainMenu,
 });
 
-let hasShownSplash = false;
-
 function MainMenu() {
-  const [showSplash, setShowSplash] = useState(true);
-
   const router = useRouter();
-  const { wipeIn, wipeOut } = useScreenWipe();
+  const navigate = useNavigate();
   const {
     titleSound: [playTitleSound],
   } = useSounds();
-
-  function handleSplashDone() {
-    setShowSplash(false);
-    hasShownSplash = true;
-    playTitleSound();
-    wipeOut('right');
-  }
 
   useEffect(() => {
     useGLTF.preload('/quigonjinn.glb');
@@ -35,18 +28,12 @@ function MainMenu() {
     router.preloadRoute({ to: '/play' });
   }, [router]);
 
-  useEffect(() => {
-    if (hasShownSplash) {
-      return;
-    }
-
-    wipeIn('left', 0);
-  }, [wipeIn]);
-
   const menuItems: MenuItemProps[] = [
     {
       children: 'New Game',
-      onClick: () => {},
+      onClick: () => {
+        navigate({ to: '/play' });
+      },
     },
     {
       render: <Link to="/options" />,
@@ -55,12 +42,10 @@ function MainMenu() {
   ];
 
   return (
-    <div className="relative flex flex-col">
+    <div className="flex flex-col">
       <img src={titleUrl} className="h-70" />
       <Menu menuItems={menuItems} />
-      {showSplash && !hasShownSplash && (
-        <SplashScreen onStart={handleSplashDone} />
-      )}
+      <SplashScreen />
     </div>
   );
 }

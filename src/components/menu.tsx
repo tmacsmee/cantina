@@ -1,24 +1,31 @@
 import { mergeProps, useRender } from '@base-ui/react';
 import type { KeyboardEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import ScreenWipeProvider from './screen-wipe-provider';
 import { useSounds } from './sound-provider';
+import { useSplash } from './splash-provider';
 
 export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
   const menuItemRefs = useRef<HTMLButtonElement[]>([]);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const { hasShownSplash } = useSplash();
+
+  useEffect(() => {
+    if (!hasShownSplash) {
+      return;
+    }
+
+    menuItemRefs.current[0].focus();
+  }, [hasShownSplash]);
+
   const {
     menuMoveSound: [playMenuMove],
     menuSelectSound: [playMenuSelect],
+    menuBackSound: [playMenuBack],
   } = useSounds();
 
-  useEffect(() => {
-    menuItemRefs.current[0].focus();
-  }, []);
-
-  function handleKeyDown(event: KeyboardEvent) {
+  function handleKeyDown(event: KeyboardEvent, isBackButton?: boolean) {
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       if (!menuItemRefs.current) {
         return;
@@ -40,18 +47,22 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
     }
 
     if (event.key === 'Enter') {
-      playMenuSelect();
+      if (isBackButton) {
+        playMenuBack();
+      } else {
+        playMenuSelect();
+      }
     }
   }
 
   return (
     <div className="font-menu flex flex-col gap-y-1 text-center text-4xl font-bold tracking-tight text-[#1a72c8] [-webkit-text-stroke:5px_#001327] [paint-order:stroke_fill]">
-      {menuItems.map(({ ...props }, index) => (
+      {menuItems.map(({ isBackButton, ...props }, index) => (
         <MenuItem
           ref={(item: HTMLButtonElement) => {
             menuItemRefs.current[index] = item;
           }}
-          defaultOnKeyDown={handleKeyDown}
+          defaultOnKeyDown={(event) => handleKeyDown(event, isBackButton)}
           tabIndex={activeIndex === index ? 0 : -1}
           {...props}
         />
@@ -62,6 +73,7 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
 
 export type MenuItemProps = useRender.ComponentProps<'button'> & {
   defaultOnKeyDown?: (event: KeyboardEvent) => void;
+  isBackButton?: boolean;
 };
 
 export function MenuItem({

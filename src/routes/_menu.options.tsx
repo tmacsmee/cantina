@@ -64,6 +64,7 @@ function Options() {
     },
     {
       render: <Link to="/" />,
+      isBackButton: true,
       children: 'Back',
     },
   ];

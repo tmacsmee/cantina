@@ -3,24 +3,55 @@ import {
   useContext,
   useEffect,
   useState,
+  type Dispatch,
   type ReactNode,
+  type SetStateAction,
 } from 'react';
 import { useScreenWipe } from './screen-wipe-provider';
 import { useSounds } from './sound-provider';
 
-export default function SplashScreen() {
+type SplashContext = {
+  hasShownSplash: boolean;
+  setHasShownSplash: Dispatch<SetStateAction<boolean>>;
+};
+
+const SplashContext = createContext<SplashContext | undefined>(undefined);
+
+export default function SplashScreenProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [hasShownSplash, setHasShownSplash] = useState(false);
+
+  return (
+    <SplashContext.Provider value={{ hasShownSplash, setHasShownSplash }}>
+      {children}
+    </SplashContext.Provider>
+  );
+}
+
+export function SplashScreen() {
+  const { hasShownSplash, setHasShownSplash } = useSplash();
   const { wipeIn, wipeOut } = useScreenWipe();
   const {
     titleSound: [playTitleSound],
   } = useSounds();
 
   useEffect(() => {
+    if (hasShownSplash) {
+      return;
+    }
+
     wipeIn('left', 0);
-  }, [wipeIn]);
+  }, [hasShownSplash, wipeIn]);
 
   useEffect(() => {
     function handleStart() {
+      if (hasShownSplash) {
+        return;
+      }
+
       wipeOut('right');
       playTitleSound();
       setHasShownSplash(true);
@@ -31,7 +62,7 @@ export default function SplashScreen() {
     return () => {
       document.removeEventListener('keydown', handleStart);
     };
-  }, [wipeOut, playTitleSound]);
+  }, [wipeOut, playTitleSound, setHasShownSplash, hasShownSplash]);
 
   if (hasShownSplash) {
     return;
@@ -52,4 +83,14 @@ export default function SplashScreen() {
       </div>
     </div>
   );
+}
+
+export function useSplash() {
+  const context = useContext(SplashContext);
+
+  if (context === undefined) {
+    throw new Error('useScreenWipe must be used within a SplashProvider');
+  }
+
+  return context;
 }
