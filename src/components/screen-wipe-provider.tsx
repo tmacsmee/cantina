@@ -1,9 +1,4 @@
-import { useNavigate } from '@tanstack/react-router';
-import {
-  scale,
-  useAnimate,
-  type AnimationPlaybackControlsWithThen,
-} from 'motion/react';
+import { useAnimate } from 'motion/react';
 import { createContext, useContext, type ReactNode } from 'react';
 
 type Direction = 'top' | 'right' | 'bottom' | 'left';

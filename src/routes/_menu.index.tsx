@@ -8,7 +8,6 @@ import {
 import { useEffect } from 'react';
 import titleUrl from '../assets/title.svg';
 import Menu, { type MenuItemProps } from '../components/menu';
-import { useSounds } from '../components/sound-provider';
 import { SplashScreen } from '../components/splash-provider';
 
 export const Route = createFileRoute('/_menu/')({
@@ -18,9 +17,6 @@ export const Route = createFileRoute('/_menu/')({
 function MainMenu() {
   const router = useRouter();
   const navigate = useNavigate();
-  const {
-    titleSound: [playTitleSound],
-  } = useSounds();
 
   useEffect(() => {
     useGLTF.preload('/quigonjinn.glb');
