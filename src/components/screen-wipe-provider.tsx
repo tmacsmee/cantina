@@ -19,7 +19,7 @@ export default function ScreenWipeProvider({
 }) {
   const [scope, animate] = useAnimate();
 
-  async function wipeIn(from: Direction, duration: number = 1) {
+  async function wipeIn(from: Direction, duration: number = 2) {
     scope.current.style.transformOrigin = from;
     return animate(
       scope.current,
@@ -33,7 +33,7 @@ export default function ScreenWipeProvider({
     );
   }
 
-  async function wipeOut(to: Direction, duration: number = 1) {
+  async function wipeOut(to: Direction, duration: number = 2) {
     scope.current.style.transformOrigin = to;
     return animate(
       scope.current,

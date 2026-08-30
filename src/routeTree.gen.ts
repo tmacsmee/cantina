@@ -13,6 +13,7 @@ import { Route as MenuRouteImport } from './routes/_menu'
 import { Route as PlayRouteImport } from './routes/play'
 import { Route as MenuIndexRouteImport } from './routes/_menu.index'
 import { Route as MenuOptionsRouteImport } from './routes/_menu.options'
+import { Route as MenuVideoSettingsRouteImport } from './routes/_menu.video-settings'
 
 const MenuRoute = MenuRouteImport.update({
   id: '/_menu',
@@ -33,15 +34,22 @@ const MenuOptionsRoute = MenuOptionsRouteImport.update({
   path: '/options',
   getParentRoute: () => MenuRoute,
 } as any)
+const MenuVideoSettingsRoute = MenuVideoSettingsRouteImport.update({
+  id: '/video-settings',
+  path: '/video-settings',
+  getParentRoute: () => MenuRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof MenuIndexRoute
   '/play': typeof PlayRoute
   '/options': typeof MenuOptionsRoute
+  '/video-settings': typeof MenuVideoSettingsRoute
 }
 export interface FileRoutesByTo {
   '/play': typeof PlayRoute
   '/options': typeof MenuOptionsRoute
+  '/video-settings': typeof MenuVideoSettingsRoute
   '/': typeof MenuIndexRoute
 }
 export interface FileRoutesById {
@@ -49,14 +57,21 @@ export interface FileRoutesById {
   '/_menu': typeof MenuRouteWithChildren
   '/play': typeof PlayRoute
   '/_menu/options': typeof MenuOptionsRoute
+  '/_menu/video-settings': typeof MenuVideoSettingsRoute
   '/_menu/': typeof MenuIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/play' | '/options'
+  fullPaths: '/' | '/play' | '/options' | '/video-settings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/play' | '/options' | '/'
-  id: '__root__' | '/_menu' | '/play' | '/_menu/options' | '/_menu/'
+  to: '/play' | '/options' | '/video-settings' | '/'
+  id:
+    | '__root__'
+    | '/_menu'
+    | '/play'
+    | '/_menu/options'
+    | '/_menu/video-settings'
+    | '/_menu/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,16 +109,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MenuOptionsRouteImport
       parentRoute: typeof MenuRoute
     }
+    '/_menu/video-settings': {
+      id: '/_menu/video-settings'
+      path: '/video-settings'
+      fullPath: '/video-settings'
+      preLoaderRoute: typeof MenuVideoSettingsRouteImport
+      parentRoute: typeof MenuRoute
+    }
   }
 }
 
 interface MenuRouteChildren {
   MenuOptionsRoute: typeof MenuOptionsRoute
+  MenuVideoSettingsRoute: typeof MenuVideoSettingsRoute
   MenuIndexRoute: typeof MenuIndexRoute
 }
 
 const MenuRouteChildren: MenuRouteChildren = {
   MenuOptionsRoute: MenuOptionsRoute,
+  MenuVideoSettingsRoute: MenuVideoSettingsRoute,
   MenuIndexRoute: MenuIndexRoute,
 }
 

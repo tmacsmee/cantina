@@ -1,23 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useAppLifecycle } from './app-lifecycle-provider';
 import { useScreenWipe } from './screen-wipe-provider';
 import { useSounds } from './sound-provider';
 
 export default function SplashScreen() {
-  const [hasShownSplash, setHasShownSplash] = useState(false);
+  const { hasShownSplash, setHasShownSplash, setShowTitleIntro } =
+    useAppLifecycle();
   const { wipeIn, wipeOut } = useScreenWipe();
   const {
     titleSound: [playTitleSound],
   } = useSounds();
 
   useEffect(() => {
+    if (hasShownSplash) {
+      return;
+    }
+
     wipeIn('left', 0);
-  }, [wipeIn]);
+  }, [hasShownSplash, wipeIn]);
 
   useEffect(() => {
     function handleStart() {
+      if (hasShownSplash) {
+        return;
+      }
+
       wipeOut('right');
       playTitleSound();
       setHasShownSplash(true);
+      setShowTitleIntro(true);
     }
 
     document.addEventListener('keydown', handleStart);
@@ -25,7 +36,13 @@ export default function SplashScreen() {
     return () => {
       document.removeEventListener('keydown', handleStart);
     };
-  }, [wipeOut, playTitleSound]);
+  }, [
+    wipeOut,
+    playTitleSound,
+    setHasShownSplash,
+    hasShownSplash,
+    setShowTitleIntro,
+  ]);
 
   if (hasShownSplash) {
     return;
@@ -40,7 +57,7 @@ export default function SplashScreen() {
         far away....
       </span>
       <div className="relative flex w-full flex-1 items-center justify-center">
-        <span className="font-menu fill-mode-backwards text-stroke animate-start-text text-3xl text-white delay-2000 [--text-stroke-width:3px]">
+        <span className="font-menu fill-mode-backwards text-stroke animate-start-text text-3xl text-white delay-2500 [--text-stroke-width:3px]">
           Press any key to start
         </span>
       </div>

@@ -69,5 +69,9 @@ function Options() {
     },
   ];
 
-  return <Menu menuItems={menuItems} />;
+  return (
+    <div className="animate-in fade-in duration-500">
+      <Menu menuItems={menuItems} />
+    </div>
+  );
 }

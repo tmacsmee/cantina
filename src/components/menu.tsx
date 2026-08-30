@@ -1,15 +1,15 @@
 import { mergeProps, useRender } from '@base-ui/react';
 import type { KeyboardEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
+import { useAppLifecycle } from './app-lifecycle-provider';
 import { useSounds } from './sound-provider';
-import { useSplash } from './splash-provider';
 
 export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
   const menuItemRefs = useRef<HTMLButtonElement[]>([]);
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const { hasShownSplash } = useSplash();
+  const { hasShownSplash } = useAppLifecycle();
 
   useEffect(() => {
     if (!hasShownSplash) {
