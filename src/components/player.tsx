@@ -16,10 +16,10 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
   return (
     <>
       <BVHEcctrl
-        debug
+        // debug
         ref={ecctrl}
         paused={isPaused}
-        position={[0, 3, 0]}
+        position={[4, 2, 7]}
         maxWalkSpeed={3.2}
         maxRunSpeed={1.6}
         jumpVel={8}
