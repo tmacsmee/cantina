@@ -1,12 +1,12 @@
 import {
   Environment,
   KeyboardControls,
-  useGLTF,
   type KeyboardControlsEntry,
 } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import { StaticCollider } from 'bvhecctrl';
+import { EffectComposer } from '@react-three/postprocessing';
 import type { Controls } from '../lib/types';
+import Cantina from './cantina';
 import Player from './player';
 
 const keyboardMap: KeyboardControlsEntry<Controls>[] = [
@@ -25,37 +25,11 @@ export default function Game({ isPaused }: { isPaused: boolean }) {
         <Environment preset="warehouse" environmentIntensity={0.3} />
         <Player isPaused={isPaused} />
         <Cantina />
+        <EffectComposer enabled={true}>
+          {/* <Bloom mipmapBlur luminanceThreshold={1} /> */}
+          {null}
+        </EffectComposer>
       </KeyboardControls>
     </Canvas>
-  );
-}
-
-const CANTINA_POSITION: [number, number, number] = [0, -3.55, 0];
-const CANTINA_ROTATION: [number, number, number] = [0, 5.9, 0];
-const CANTINA_SCALE = 3.2;
-
-function Cantina() {
-  const { scenes } = useGLTF('/cantina.glb');
-  const [visual, collision] = scenes;
-
-  return (
-    <>
-      <group
-        position={CANTINA_POSITION}
-        rotation={CANTINA_ROTATION}
-        scale={CANTINA_SCALE}
-      >
-        <primitive object={visual} />
-      </group>
-      <StaticCollider
-        position={CANTINA_POSITION}
-        rotation={CANTINA_ROTATION}
-        scale={CANTINA_SCALE}
-      >
-        <group visible={false}>
-          <primitive object={collision} />
-        </group>
-      </StaticCollider>
-    </>
   );
 }

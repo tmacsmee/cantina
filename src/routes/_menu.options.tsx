@@ -2,7 +2,7 @@ import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { useEffect, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import type { MenuItemProps } from '../components/menu';
 import Menu from '../components/menu';
-import { useSounds } from '../components/sound-provider';
+import { useSounds } from '../hooks/use-sounds';
 
 export const Route = createFileRoute('/_menu/options')({
   component: Options,

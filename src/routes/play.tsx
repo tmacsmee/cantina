@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Game from '../components/game';
 import Hud from '../components/hud';
 import Menu from '../components/pause-menu';
-import { useSounds } from '../components/sound-provider';
+import { useSounds } from '../hooks/use-sounds';
 
 export const Route = createFileRoute('/play')({
   component: RouteComponent,

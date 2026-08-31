@@ -1,6 +1,5 @@
 import {
   createContext,
-  useContext,
   useState,
   type Dispatch,
   type ReactNode,
@@ -28,7 +27,8 @@ type SoundContext = {
 export const SoundContext = createContext<SoundContext | undefined>(undefined);
 
 export default function SoundProvider({ children }: { children: ReactNode }) {
-  const [volume, setVolume] = useState(5);
+  // const [volume, setVolume] = useState(5);
+  const [volume, setVolume] = useState(0);
   const [isMusicOn, setIsMusicOn] = useState(true);
 
   const scaledVolume = volume / 10;
@@ -40,7 +40,7 @@ export default function SoundProvider({ children }: { children: ReactNode }) {
   });
 
   return (
-    <SoundContext.Provider
+    <SoundContext
       value={{
         volume,
         isMusicOn,
@@ -53,16 +53,6 @@ export default function SoundProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </SoundContext.Provider>
+    </SoundContext>
   );
-}
-
-export function useSounds() {
-  const context = useContext(SoundContext);
-
-  if (context === undefined) {
-    throw new Error('useSounds must be used within a SoundProvider');
-  }
-
-  return context;
 }

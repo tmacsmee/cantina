@@ -32,9 +32,9 @@ function getActionState(
     case 'IDLE':
       return 'IDLE';
     case 'WALK':
-      return 'WALK';
-    case 'RUN':
       return 'RUN';
+    case 'RUN':
+      return 'WALK';
     case 'JUMP_START':
       return 'JUMP';
     case 'JUMP_IDLE':

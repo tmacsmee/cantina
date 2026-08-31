@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
+import { useScreenWipe } from '../hooks/use-screen-wipe';
+import { useSounds } from '../hooks/use-sounds';
 import { useAppLifecycle } from './app-lifecycle-provider';
-import { useScreenWipe } from './screen-wipe-provider';
-import { useSounds } from './sound-provider';
 
 export default function SplashScreen() {
   const { hasShownSplash, setHasShownSplash, setShowTitleIntro } =
