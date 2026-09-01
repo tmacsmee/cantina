@@ -37,7 +37,7 @@ export default function Game({
       <Preload all />
       <SceneReady onReady={onReady} />
       <ambientLight intensity={0.3} />
-      <directionalLight position={[-1, 1, 5]} intensity={1} />
+      <directionalLight position={[-0.2, 2.5, 1.4]} intensity={2} />
       <KeyboardControls map={keyboardMap}>
         {/* <Freecam /> */}
         <Player isPaused={isPaused} />
