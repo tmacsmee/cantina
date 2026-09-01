@@ -10,7 +10,6 @@ import titleUrl from '../assets/title.svg';
 import { useAppLifecycle } from '../components/app-lifecycle-provider';
 import Menu, { type MenuItemProps } from '../components/menu';
 import SplashScreen from '../components/splash-screen';
-import { useScreenWipe } from '../hooks/use-screen-wipe';
 import { cn } from '../lib/utils';
 
 export const Route = createFileRoute('/_menu/')({
@@ -22,7 +21,6 @@ function MainMenu() {
     useAppLifecycle();
   const router = useRouter();
   const navigate = useNavigate();
-  const { wipeIn } = useScreenWipe();
 
   useEffect(() => {
     useGLTF.preload('/quigonjinn.glb');

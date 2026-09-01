@@ -3,8 +3,9 @@ import type { BVHEcctrlApi } from 'bvhecctrl';
 import { type RefObject } from 'react';
 import { Camera, Vector3 } from 'three';
 
-const CAMERA_ORIGIN = new Vector3(17, 2, 15);
-const CAMERA_DISTANCE = 6;
+const CAMERA_ORIGIN = new Vector3(15, 2, 7);
+const CAMERA_DISTANCE = 8.2;
+const CAMERA_HEIGHT = 2.8;
 
 const viewDirection = new Vector3();
 const desiredCamPos = new Vector3();
@@ -24,7 +25,7 @@ export function useCamera(
     desiredCamPos
       .copy(target)
       .addScaledVector(viewDirection, -CAMERA_DISTANCE)
-      .setY(2.6);
+      .setY(CAMERA_HEIGHT);
 
     lookAtPos.lerp(target, 1 - Math.pow(0.001, delta));
     camera.position.lerp(desiredCamPos, 1 - Math.pow(0.001, delta));

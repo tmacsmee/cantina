@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ScreenWipeContext } from '../components/screen-wipe-provider';
 
-export function useScreenWipe() {
+export default function useScreenWipe() {
   const context = useContext(ScreenWipeContext);
 
   if (context === undefined) {

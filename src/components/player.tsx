@@ -14,23 +14,22 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
   useAnimatePlayer(animations, player, ecctrl, isPaused);
 
   return (
-    <>
-      <BVHEcctrl
-        // debug
-        ref={ecctrl}
-        paused={isPaused}
-        position={[4, 2, 7]}
-        maxWalkSpeed={3.2}
-        maxRunSpeed={1.6}
-        jumpVel={8}
-        gravity={22}
-        fallGravityFactor={1}
-        turnSpeed={9}
-      >
-        <group ref={player} position={[0, -0.78, 0]} castShadow>
-          <primitive object={scene} />
-        </group>
-      </BVHEcctrl>
-    </>
+    <BVHEcctrl
+      // debug
+      ref={ecctrl}
+      paused={isPaused}
+      position={[4, 2, 7]}
+      maxWalkSpeed={3.4}
+      maxRunSpeed={1.6}
+      jumpVel={8}
+      gravity={22}
+      fallGravityFactor={1}
+      turnSpeed={9}
+      delay={0}
+    >
+      <group ref={player} position={[0, -0.78, 0]} scale={3.2} castShadow>
+        <primitive object={scene} />
+      </group>
+    </BVHEcctrl>
   );
 }

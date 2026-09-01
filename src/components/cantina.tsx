@@ -1,8 +1,6 @@
 import { useGLTF } from '@react-three/drei';
 import { StaticCollider } from 'bvhecctrl';
 
-const CANTINA_POSITION: [number, number, number] = [0, -3.55, 0];
-const CANTINA_ROTATION: [number, number, number] = [0, 5.9, 0];
 const CANTINA_SCALE = 3.2;
 
 export default function Cantina() {
@@ -11,18 +9,10 @@ export default function Cantina() {
 
   return (
     <>
-      <group
-        position={CANTINA_POSITION}
-        rotation={CANTINA_ROTATION}
-        scale={CANTINA_SCALE}
-      >
+      <group scale={CANTINA_SCALE}>
         <primitive object={visual} />
       </group>
-      <StaticCollider
-        position={CANTINA_POSITION}
-        rotation={CANTINA_ROTATION}
-        scale={CANTINA_SCALE}
-      >
+      <StaticCollider scale={CANTINA_SCALE}>
         <group visible={false}>
           <primitive object={collision} />
         </group>

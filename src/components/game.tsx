@@ -1,10 +1,11 @@
 import {
-  Environment,
   KeyboardControls,
+  Preload,
   type KeyboardControlsEntry,
 } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
-import { EffectComposer } from '@react-three/postprocessing';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useRef } from 'react';
+import { Color } from 'three';
 import type { Controls } from '../lib/types';
 import Cantina from './cantina';
 import Player from './player';
@@ -16,20 +17,45 @@ const keyboardMap: KeyboardControlsEntry<Controls>[] = [
   { name: 'rightward', keys: ['ArrowRight', 'KeyD'] },
   { name: 'jump', keys: ['Space'] },
   { name: 'run', keys: ['ShiftLeft', 'ShiftRight'] },
+  { name: 'crouch', keys: ['ControlLeft'] },
 ];
 
-export default function Game({ isPaused }: { isPaused: boolean }) {
+export default function Game({
+  isPaused,
+  onReady,
+}: {
+  isPaused: boolean;
+  onReady: () => void;
+}) {
   return (
-    <Canvas camera={{ fov: 30 }} flat gl={{ antialias: false }}>
+    <Canvas
+      camera={{ fov: 30 }}
+      flat
+      gl={{ antialias: false }}
+      scene={{ background: new Color('#313024') }}
+    >
+      <Preload all />
+      <SceneReady onReady={onReady} />
+      <ambientLight intensity={0.3} />
+      <directionalLight position={[-1, 1, 5]} intensity={1} />
       <KeyboardControls map={keyboardMap}>
-        <Environment preset="warehouse" environmentIntensity={0.3} />
+        {/* <Freecam /> */}
         <Player isPaused={isPaused} />
-        <Cantina />
-        <EffectComposer enabled={true}>
-          {/* <Bloom mipmapBlur luminanceThreshold={1} /> */}
-          {null}
-        </EffectComposer>
       </KeyboardControls>
+      <Cantina />
     </Canvas>
   );
+}
+
+function SceneReady({ onReady }: { onReady: () => void }) {
+  const frames = useRef(0);
+
+  useFrame(() => {
+    frames.current++;
+    if (frames.current === 2) {
+      onReady();
+    }
+  });
+
+  return null;
 }

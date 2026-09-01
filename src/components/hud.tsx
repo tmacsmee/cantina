@@ -1,6 +1,6 @@
 export default function Hud() {
   return (
-    <div className="fixed inset-0">
+    <div className="pointer-events-none fixed inset-0">
       <div className="absolute top-12 left-24 flex items-center gap-x-4">
         <div className="relative size-24">
           <img src="/blue_ring.png" className="absolute size-full" />
