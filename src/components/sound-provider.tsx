@@ -6,9 +6,10 @@ import {
   type SetStateAction,
 } from 'react';
 import useSound from 'use-sound';
-import menuBack from '../assets/audio/menu-back.wav';
-import menuMove from '../assets/audio/menu-move.wav';
-import menuSelect from '../assets/audio/menu-select.wav';
+import cantinaMusic from '../assets/audio/cantina.ogg';
+import menuBackSound from '../assets/audio/menu-back.wav';
+import menuMoveSound from '../assets/audio/menu-move.wav';
+import menuSelectSound from '../assets/audio/menu-select.wav';
 import titleMusic from '../assets/audio/title.ogg';
 
 type Sound = ReturnType<typeof useSound>;
@@ -18,26 +19,35 @@ type SoundContext = {
   isMusicOn: boolean;
   setVolume: Dispatch<SetStateAction<number>>;
   setIsMusicOn: Dispatch<SetStateAction<boolean>>;
-  menuMoveSound: Sound;
-  menuSelectSound: Sound;
-  menuBackSound: Sound;
-  titleSound: Sound;
+  sounds: Record<string, Sound>;
 };
 
 export const SoundContext = createContext<SoundContext | undefined>(undefined);
 
 export default function SoundProvider({ children }: { children: ReactNode }) {
-  // const [volume, setVolume] = useState(5);
-  const [volume, setVolume] = useState(0);
+  const [volume, setVolume] = useState(5);
+  // const [volume, setVolume] = useState(0);
   const [isMusicOn, setIsMusicOn] = useState(true);
 
   const scaledVolume = volume / 10;
-  const menuMoveSound = useSound(menuMove, { volume: scaledVolume });
-  const menuSelectSound = useSound(menuSelect, { volume: scaledVolume });
-  const menuBackSound = useSound(menuBack, { volume: scaledVolume });
-  const titleSound = useSound(titleMusic, {
+  const menuMove = useSound(menuMoveSound, { volume: scaledVolume });
+  const menuSelect = useSound(menuSelectSound, { volume: scaledVolume });
+  const menuBack = useSound(menuBackSound, { volume: scaledVolume });
+
+  const title = useSound(titleMusic, {
     volume: isMusicOn ? scaledVolume : 0,
   });
+  const cantina = useSound(cantinaMusic, {
+    volume: isMusicOn ? scaledVolume : 0,
+  });
+
+  const sounds = {
+    menuMove,
+    menuSelect,
+    menuBack,
+    title,
+    cantina,
+  };
 
   return (
     <SoundContext
@@ -46,10 +56,7 @@ export default function SoundProvider({ children }: { children: ReactNode }) {
         isMusicOn,
         setVolume,
         setIsMusicOn,
-        menuMoveSound,
-        menuSelectSound,
-        menuBackSound,
-        titleSound,
+        sounds,
       }}
     >
       {children}

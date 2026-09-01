@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { SoundContext } from '../components/sound-provider';
 
-export function useSounds() {
+export default function useSounds() {
   const context = useContext(SoundContext);
 
   if (context === undefined) {

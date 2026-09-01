@@ -1,7 +1,7 @@
 import { mergeProps, useRender } from '@base-ui/react';
 import type { KeyboardEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { useSounds } from '../hooks/use-sounds';
+import useSounds from '../hooks/use-sounds';
 import { useAppLifecycle } from './app-lifecycle-provider';
 
 export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
@@ -20,9 +20,11 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
   }, [hasShownSplash]);
 
   const {
-    menuMoveSound: [playMenuMove],
-    menuSelectSound: [playMenuSelect],
-    menuBackSound: [playMenuBack],
+    sounds: {
+      menuMove: [playMenuMove],
+      menuSelect: [playMenuSelect],
+      menuBack: [playMenuBack],
+    },
   } = useSounds();
 
   function handleKeyDown(event: KeyboardEvent, isBackButton?: boolean) {

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import useScreenWipe from '../hooks/use-screen-wipe';
-import { useSounds } from '../hooks/use-sounds';
+import useSounds from '../hooks/use-sounds';
 import { useAppLifecycle } from './app-lifecycle-provider';
 
 export default function SplashScreen() {
@@ -8,7 +8,9 @@ export default function SplashScreen() {
     useAppLifecycle();
   const { wipeIn, wipeOut } = useScreenWipe();
   const {
-    titleSound: [playTitleSound],
+    sounds: {
+      title: [playTitleMusic],
+    },
   } = useSounds();
 
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function SplashScreen() {
       }
 
       wipeOut('right');
-      playTitleSound();
+      playTitleMusic();
       setHasShownSplash(true);
       setShowTitleIntro(true);
     }
@@ -38,7 +40,7 @@ export default function SplashScreen() {
     };
   }, [
     wipeOut,
-    playTitleSound,
+    playTitleMusic,
     setHasShownSplash,
     hasShownSplash,
     setShowTitleIntro,

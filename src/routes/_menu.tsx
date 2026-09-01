@@ -1,10 +1,22 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router';
+import { useEffect } from 'react';
+import useSounds from '../hooks/use-sounds';
 
 export const Route = createFileRoute('/_menu')({
   component: MenuLayout,
 });
 
 function MenuLayout() {
+  const {
+    sounds: {
+      title: [, { stop }],
+    },
+  } = useSounds();
+
+  useEffect(() => {
+    return () => stop();
+  }, [stop]);
+
   return (
     <main className="flex h-screen items-center justify-center overflow-hidden bg-black">
       <div className="animate-starfield fixed inset-0 bg-[url('/starfield.png')] bg-size-(--starfield-width) bg-repeat [--starfield-width:250px]" />

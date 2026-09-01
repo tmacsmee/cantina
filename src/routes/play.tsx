@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState } from 'react';
 import Game from '../components/game';
 import Hud from '../components/hud';
 import Menu from '../components/pause-menu';
-import { useSounds } from '../hooks/use-sounds';
+import useSounds from '../hooks/use-sounds';
 import { cn } from '../lib/utils';
 
 export const Route = createFileRoute('/play')({
@@ -16,8 +16,11 @@ function RouteComponent() {
   const [isReady, setIsReady] = useState(false);
 
   const {
-    menuSelectSound: [playMenuSelect],
-    menuBackSound: [playMenuBack],
+    sounds: {
+      menuSelect: [playMenuSelect],
+      menuBack: [playMenuBack],
+      cantina: [playCantina, { stop }],
+    },
   } = useSounds();
 
   useEffect(() => {
@@ -34,6 +37,15 @@ function RouteComponent() {
       window.removeEventListener('keydown', handleEscapeKey);
     };
   }, [isPaused, playMenuSelect]);
+
+  useEffect(() => {
+    if (!isReady) {
+      return;
+    }
+
+    playCantina();
+    return () => stop();
+  }, [isReady, playCantina, stop]);
 
   function handleMenuOpenChange(isOpen: boolean) {
     if (!isOpen) {
