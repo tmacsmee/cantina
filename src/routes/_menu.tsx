@@ -1,4 +1,5 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router';
+import { useGLTF } from '@react-three/drei';
+import { createFileRoute, Outlet, useRouter } from '@tanstack/react-router';
 import { useEffect } from 'react';
 import useSounds from '../hooks/use-sounds';
 
@@ -7,11 +8,18 @@ export const Route = createFileRoute('/_menu')({
 });
 
 function MenuLayout() {
+  const router = useRouter();
   const {
     sounds: {
       title: [, { stop }],
     },
   } = useSounds();
+
+  useEffect(() => {
+    useGLTF.preload('/quigonjinn.glb');
+    useGLTF.preload('/cantina.glb');
+    router.preloadRoute({ to: '/play' });
+  }, [router]);
 
   useEffect(() => {
     return () => stop();

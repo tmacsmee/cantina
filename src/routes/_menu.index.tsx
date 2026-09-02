@@ -1,11 +1,4 @@
-import { useGLTF } from '@react-three/drei';
-import {
-  createFileRoute,
-  Link,
-  useNavigate,
-  useRouter,
-} from '@tanstack/react-router';
-import { useEffect } from 'react';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import titleUrl from '../assets/title.svg';
 import { useAppLifecycle } from '../components/app-lifecycle-provider';
 import Menu, { type MenuItemProps } from '../components/menu';
@@ -19,14 +12,7 @@ export const Route = createFileRoute('/_menu/')({
 function MainMenu() {
   const { showTitleIntro, hasShownSplash, setShowTitleIntro } =
     useAppLifecycle();
-  const router = useRouter();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    useGLTF.preload('/quigonjinn.glb');
-    useGLTF.preload('/cantina.glb');
-    router.preloadRoute({ to: '/play' });
-  }, [router]);
 
   const menuItems: MenuItemProps[] = [
     {
@@ -50,7 +36,7 @@ function MainMenu() {
       <img
         src={titleUrl}
         className={cn(
-          'h-70',
+          'h-70 will-change-transform',
           hasShownSplash &&
             !showTitleIntro &&
             'animate-in fade-in duration-1000',

@@ -66,31 +66,44 @@ function RouteComponent() {
       </Suspense>
       <Menu open={isPaused} onOpenChange={handleMenuOpenChange} />
       <Hud />
-      {/* <LoadingScreen isReady={isReady} /> */}
+      <LoadingScreen isReady={isReady} />
     </div>
   );
 }
 
 function LoadingScreen({ isReady }: { isReady: boolean }) {
+  const [fadeFinished, setFadeFinished] = useState(false);
+
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center bg-black">
+    <div
+      className={cn(
+        'fixed inset-0 flex flex-col items-center justify-center bg-black',
+        fadeFinished && 'animate-out fade-out fill-mode-forwards duration-1000',
+      )}
+    >
       <div
         className={cn(
-          'relative -mb-6 -ml-26 size-36 duration-1000',
+          'relative -mb-6 -ml-26 size-36 duration-2000',
           isReady
-            ? 'animate-out fade-out fill-mode-forwards delay-1000'
-            : 'animate-in slide-in-from-left fade-in',
+            ? 'animate-out fade-out fill-mode-forwards delay-2000'
+            : 'animate-in slide-in-from-left fill-mode-backwards fade-in delay-1000',
         )}
+        onAnimationEnd={() => {
+          if (isReady) {
+            setFadeFinished(true);
+          }
+        }}
       >
         <img src="/blue_ring.png" className="absolute size-full" />
         <img src="/quigonjinn.png" className="absolute size-full" />
       </div>
+
       <div
         className={cn(
-          'relative -mt-6 -mr-26 size-36 duration-1000',
+          'relative -mt-6 -mr-26 size-36 duration-2500',
           isReady
-            ? 'animate-out fade-out fill-mode-forwards delay-1200'
-            : 'animate-in slide-in-from-right fade-in delay-200',
+            ? 'animate-out fade-out fill-mode-forwards delay-2200'
+            : 'animate-in slide-in-from-right fill-mode-backwards fade-in delay-2700',
         )}
       >
         <img src="/green_ring.png" className="absolute size-full" />

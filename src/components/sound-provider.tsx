@@ -25,8 +25,8 @@ type SoundContext = {
 export const SoundContext = createContext<SoundContext | undefined>(undefined);
 
 export default function SoundProvider({ children }: { children: ReactNode }) {
-  const [volume, setVolume] = useState(5);
-  // const [volume, setVolume] = useState(0);
+  // const [volume, setVolume] = useState(5);
+  const [volume, setVolume] = useState(0);
   const [isMusicOn, setIsMusicOn] = useState(true);
 
   const scaledVolume = volume / 10;
