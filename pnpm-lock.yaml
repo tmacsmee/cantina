@@ -10,46 +10,46 @@ importers:
     dependencies:
       '@base-ui/react':
         specifier: ^1.7.0
-        version: 1.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)
+        version: 1.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@react-three/drei':
         specifier: ^10.7.8
-        version: 10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
+        version: 10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)
       '@react-three/fiber':
         specifier: ^9.7.0
-        version: 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
+        version: 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)
       '@react-three/postprocessing':
         specifier: ^3.1.1
-        version: 3.1.1(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/three@0.185.4)(postprocessing@6.39.4(three@0.185.1))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
+        version: 3.1.1(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/three@0.185.4)(postprocessing@6.39.4(three@0.185.1))(react@19.2.8)(three@0.185.1)
       '@react-three/rapier':
         specifier: ^2.2.0
-        version: 2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
+        version: 2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(react@19.2.8)(three@0.185.1)
       '@tailwindcss/vite':
         specifier: ^4.3.3
         version: 4.3.3(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
       '@tanstack/react-router':
         specifier: ^1.170.32
-        version: 1.170.32(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)
+        version: 1.170.32(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@types/three':
         specifier: ^0.185.4
         version: 0.185.4
       bvhecctrl:
         specifier: ^0.0.18
-        version: 0.0.18(@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)(use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111))
+        version: 0.0.18(@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)(use-sync-external-store@1.6.0(react@19.2.8))
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
       ecctrl:
         specifier: ^2.0.1
-        version: 2.0.1(@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@react-three/rapier@2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)(use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111))
+        version: 2.0.1(@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@react-three/rapier@2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)(use-sync-external-store@1.6.0(react@19.2.8))
       motion:
         specifier: ^13.1.1
-        version: 13.1.1(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)
+        version: 13.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       react:
-        specifier: 19.3.0-canary-1ea46df8-20251111
-        version: 19.3.0-canary-1ea46df8-20251111
+        specifier: 19.2.8
+        version: 19.2.8
       react-dom:
         specifier: ^19.2.8
-        version: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+        version: 19.2.8(react@19.2.8)
       tailwind-merge:
         specifier: ^3.6.0
         version: 3.6.0
@@ -61,7 +61,7 @@ importers:
         version: 0.185.1
       use-sound:
         specifier: ^5.0.0
-        version: 5.0.0(react@19.3.0-canary-1ea46df8-20251111)
+        version: 5.0.0(react@19.2.8)
     devDependencies:
       '@babel/core':
         specifier: ^7.29.7
@@ -71,7 +71,7 @@ importers:
         version: 0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
       '@tanstack/router-plugin':
         specifier: ^1.168.35
-        version: 1.168.35(@tanstack/react-router@1.170.32(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111))(rolldown@1.2.5)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
+        version: 1.168.35(@tanstack/react-router@1.170.32(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(rolldown@1.2.5)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
       '@types/babel__core':
         specifier: ^7.20.5
         version: 7.20.5
@@ -1300,8 +1300,8 @@ packages:
       react-dom:
         optional: true
 
-  react@19.3.0-canary-1ea46df8-20251111:
-    resolution: {integrity: sha512-NxS7ACjqWqZL59RK6t80mc/MnjferTIHB5jwaLB8aU2HqTv+sTNkBZoRlA7rnd/lnQ9SXvE+fIDByuiW3gl8Wg==}
+  react@19.2.8:
+    resolution: {integrity: sha512-PWaYA1L/q9u2u7xYQi+Y3L3Yfnie7XyLeaJICV1MGD6LprsBxcAqGjYyr0eY3p+QdsA+x/Irkt4Qif8D63+Sbw==}
     engines: {node: '>=0.10.0'}
 
   readdirp@5.1.1:
@@ -1678,26 +1678,26 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@base-ui/react@1.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)':
+  '@base-ui/react@1.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@babel/runtime': 7.29.7
-      '@base-ui/utils': 0.3.2(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)
-      '@floating-ui/react-dom': 2.1.9(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)
+      '@base-ui/utils': 0.3.2(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@floating-ui/react-dom': 2.1.9(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@floating-ui/utils': 0.2.12
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
-      use-sync-external-store: 1.6.0(react@19.3.0-canary-1ea46df8-20251111)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+      use-sync-external-store: 1.6.0(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.18
 
-  '@base-ui/utils@0.3.2(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)':
+  '@base-ui/utils@0.3.2(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@floating-ui/utils': 0.2.12
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
       reselect: 5.3.0
-      use-sync-external-store: 1.6.0(react@19.3.0-canary-1ea46df8-20251111)
+      use-sync-external-store: 1.6.0(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.18
 
@@ -1714,11 +1714,11 @@ snapshots:
       '@floating-ui/core': 1.8.0
       '@floating-ui/utils': 0.2.12
 
-  '@floating-ui/react-dom@2.1.9(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)':
+  '@floating-ui/react-dom@2.1.9(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@floating-ui/dom': 1.8.0
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
   '@floating-ui/utils@0.2.12': {}
 
@@ -1807,13 +1807,13 @@ snapshots:
   '@oxlint/binding-win32-x64-msvc@1.79.0':
     optional: true
 
-  '@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)':
+  '@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@mediapipe/tasks-vision': 0.10.17
       '@monogrid/gainmap-js': 3.4.0(three@0.185.1)
-      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
-      '@use-gesture/react': 10.3.1(react@19.3.0-canary-1ea46df8-20251111)
+      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)
+      '@use-gesture/react': 10.3.1(react@19.2.8)
       camera-controls: 3.1.2(three@0.185.1)
       cross-env: 7.0.3
       detect-gpu: 5.0.70
@@ -1821,62 +1821,62 @@ snapshots:
       hls.js: 1.7.1
       maath: 0.10.8(@types/three@0.185.4)(three@0.185.1)
       meshline: 3.3.1(three@0.185.1)
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
       stats-gl: 2.4.2(@types/three@0.185.4)(three@0.185.1)
       stats.js: 0.17.0
-      suspend-react: 0.1.3(react@19.3.0-canary-1ea46df8-20251111)
+      suspend-react: 0.1.3(react@19.2.8)
       three: 0.185.1
       three-mesh-bvh: 0.8.3(three@0.185.1)
       three-stdlib: 2.36.1(three@0.185.1)
       troika-three-text: 0.52.5(three@0.185.1)
-      tunnel-rat: 0.1.2(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111)
-      use-sync-external-store: 1.6.0(react@19.3.0-canary-1ea46df8-20251111)
+      tunnel-rat: 0.1.2(@types/react@19.2.18)(react@19.2.8)
+      use-sync-external-store: 1.6.0(react@19.2.8)
       utility-types: 3.11.0
-      zustand: 5.0.15(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111)(use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111))
+      zustand: 5.0.15(@types/react@19.2.18)(react@19.2.8)(use-sync-external-store@1.6.0(react@19.2.8))
     optionalDependencies:
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      react-dom: 19.2.8(react@19.2.8)
     transitivePeerDependencies:
       - '@types/react'
       - '@types/three'
       - immer
 
-  '@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)':
+  '@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@types/webxr': 0.5.24
       base64-js: 1.5.1
       buffer: 6.0.3
-      its-fine: 2.0.0(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111)
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-use-measure: 2.1.7(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)
+      its-fine: 2.0.0(@types/react@19.2.18)(react@19.2.8)
+      react: 19.2.8
+      react-use-measure: 2.1.7(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       scheduler: 0.27.0
-      suspend-react: 0.1.3(react@19.3.0-canary-1ea46df8-20251111)
+      suspend-react: 0.1.3(react@19.2.8)
       three: 0.185.1
-      use-sync-external-store: 1.6.0(react@19.3.0-canary-1ea46df8-20251111)
-      zustand: 5.0.15(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111)(use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111))
+      use-sync-external-store: 1.6.0(react@19.2.8)
+      zustand: 5.0.15(@types/react@19.2.18)(react@19.2.8)(use-sync-external-store@1.6.0(react@19.2.8))
     optionalDependencies:
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      react-dom: 19.2.8(react@19.2.8)
     transitivePeerDependencies:
       - '@types/react'
       - immer
 
-  '@react-three/postprocessing@3.1.1(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/three@0.185.4)(postprocessing@6.39.4(three@0.185.1))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)':
+  '@react-three/postprocessing@3.1.1(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/three@0.185.4)(postprocessing@6.39.4(three@0.185.1))(react@19.2.8)(three@0.185.1)':
     dependencies:
-      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
+      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)
       maath: 0.10.8(@types/three@0.185.4)(three@0.185.1)
       n8ao: 2.0.1(postprocessing@6.39.4(three@0.185.1))(three@0.185.1)
       postprocessing: 6.39.4(three@0.185.1)
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
       three: 0.185.1
     transitivePeerDependencies:
       - '@types/three'
 
-  '@react-three/rapier@2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)':
+  '@react-three/rapier@2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(react@19.2.8)(three@0.185.1)':
     dependencies:
       '@dimforge/rapier3d-compat': 0.19.2
-      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
-      react: 19.3.0-canary-1ea46df8-20251111
-      suspend-react: 0.1.3(react@19.3.0-canary-1ea46df8-20251111)
+      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)
+      react: 19.2.8
+      suspend-react: 0.1.3(react@19.2.8)
       three: 0.185.1
       three-stdlib: 2.36.1(three@0.185.1)
 
@@ -2006,21 +2006,21 @@ snapshots:
 
   '@tanstack/history@1.162.1': {}
 
-  '@tanstack/react-router@1.170.32(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)':
+  '@tanstack/react-router@1.170.32(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@tanstack/history': 1.162.1
-      '@tanstack/react-store': 0.9.3(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)
+      '@tanstack/react-store': 0.9.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@tanstack/router-core': 1.171.27
       isbot: 5.2.1
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
-  '@tanstack/react-store@0.9.3(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)':
+  '@tanstack/react-store@0.9.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:
       '@tanstack/store': 0.9.3
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
-      use-sync-external-store: 1.6.0(react@19.3.0-canary-1ea46df8-20251111)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+      use-sync-external-store: 1.6.0(react@19.2.8)
 
   '@tanstack/router-core@1.171.27':
     dependencies:
@@ -2042,7 +2042,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@tanstack/router-plugin@1.168.35(@tanstack/react-router@1.170.32(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111))(rolldown@1.2.5)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))':
+  '@tanstack/router-plugin@1.168.35(@tanstack/react-router@1.170.32(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(rolldown@1.2.5)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/template': 7.29.7
@@ -2054,7 +2054,7 @@ snapshots:
       unplugin: 3.3.0(rolldown@1.2.5)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))
       zod: 4.4.3
     optionalDependencies:
-      '@tanstack/react-router': 1.170.32(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)
+      '@tanstack/react-router': 1.170.32(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       vite: 8.2.1(@types/node@24.13.3)(jiti@2.7.0)
     transitivePeerDependencies:
       - '@farmfe/core'
@@ -2143,10 +2143,10 @@ snapshots:
 
   '@use-gesture/core@10.3.1': {}
 
-  '@use-gesture/react@10.3.1(react@19.3.0-canary-1ea46df8-20251111)':
+  '@use-gesture/react@10.3.1(react@19.2.8)':
     dependencies:
       '@use-gesture/core': 10.3.1
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
 
   '@vitejs/plugin-react@6.0.5(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7)(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0)))(babel-plugin-react-compiler@1.0.0)(vite@8.2.1(@types/node@24.13.3)(jiti@2.7.0))':
     dependencies:
@@ -2192,15 +2192,15 @@ snapshots:
       base64-js: 1.5.1
       ieee754: 1.2.1
 
-  bvhecctrl@0.0.18(@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)(use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111)):
+  bvhecctrl@0.0.18(@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)(use-sync-external-store@1.6.0(react@19.2.8)):
     dependencies:
-      '@react-three/drei': 10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
-      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      '@react-three/drei': 10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)
+      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
       three: 0.185.1
       three-mesh-bvh: 0.9.14(three@0.185.1)
-      zustand: 5.0.15(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111)(use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111))
+      zustand: 5.0.15(@types/react@19.2.18)(react@19.2.8)(use-sync-external-store@1.6.0(react@19.2.8))
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -2248,16 +2248,16 @@ snapshots:
 
   draco3d@1.5.7: {}
 
-  ecctrl@2.0.1(@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@react-three/rapier@2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)(use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111)):
+  ecctrl@2.0.1(@react-three/drei@10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@react-three/rapier@2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)(use-sync-external-store@1.6.0(react@19.2.8)):
     dependencies:
-      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
-      '@react-three/rapier': 2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      '@react-three/fiber': 9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)
+      '@react-three/rapier': 2.2.0(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(react@19.2.8)(three@0.185.1)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
       three: 0.185.1
-      zustand: 5.0.15(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111)(use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111))
+      zustand: 5.0.15(@types/react@19.2.18)(react@19.2.8)(use-sync-external-store@1.6.0(react@19.2.8))
     optionalDependencies:
-      '@react-three/drei': 10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)(three@0.185.1)
+      '@react-three/drei': 10.7.8(@react-three/fiber@9.7.0(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1))(@types/react@19.2.18)(@types/three@0.185.4)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(three@0.185.1)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -2280,14 +2280,14 @@ snapshots:
 
   fflate@0.8.3: {}
 
-  framer-motion@13.1.1(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111):
+  framer-motion@13.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
       motion-dom: 13.1.1
       motion-utils: 13.0.0
       tslib: 2.8.1
     optionalDependencies:
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
   fsevents@2.3.3:
     optional: true
@@ -2312,10 +2312,10 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  its-fine@2.0.0(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111):
+  its-fine@2.0.0(@types/react@19.2.18)(react@19.2.8):
     dependencies:
       '@types/react-reconciler': 0.28.9(@types/react@19.2.18)
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
     transitivePeerDependencies:
       - '@types/react'
 
@@ -2454,13 +2454,13 @@ snapshots:
 
   motion-utils@13.0.0: {}
 
-  motion@13.1.1(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111):
+  motion@13.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
-      framer-motion: 13.1.1(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111)
+      framer-motion: 13.1.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       tslib: 2.8.1
     optionalDependencies:
-      react: 19.3.0-canary-1ea46df8-20251111
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
   ms@2.1.3: {}
 
@@ -2526,18 +2526,18 @@ snapshots:
       is-promise: 2.2.2
       lie: 3.3.0
 
-  react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111):
+  react-dom@19.2.8(react@19.2.8):
     dependencies:
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
       scheduler: 0.27.0
 
-  react-use-measure@2.1.7(react-dom@19.2.8(react@19.3.0-canary-1ea46df8-20251111))(react@19.3.0-canary-1ea46df8-20251111):
+  react-use-measure@2.1.7(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
     optionalDependencies:
-      react-dom: 19.2.8(react@19.3.0-canary-1ea46df8-20251111)
+      react-dom: 19.2.8(react@19.2.8)
 
-  react@19.3.0-canary-1ea46df8-20251111: {}
+  react@19.2.8: {}
 
   readdirp@5.1.1: {}
 
@@ -2591,9 +2591,9 @@ snapshots:
 
   stats.js@0.17.0: {}
 
-  suspend-react@0.1.3(react@19.3.0-canary-1ea46df8-20251111):
+  suspend-react@0.1.3(react@19.2.8):
     dependencies:
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
 
   tailwind-merge@3.6.0: {}
 
@@ -2642,9 +2642,9 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tunnel-rat@0.1.2(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111):
+  tunnel-rat@0.1.2(@types/react@19.2.18)(react@19.2.8):
     dependencies:
-      zustand: 4.5.7(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111)
+      zustand: 4.5.7(@types/react@19.2.18)(react@19.2.8)
     transitivePeerDependencies:
       - '@types/react'
       - immer
@@ -2671,14 +2671,14 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
-  use-sound@5.0.0(react@19.3.0-canary-1ea46df8-20251111):
+  use-sound@5.0.0(react@19.2.8):
     dependencies:
       howler: 2.2.4
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
 
-  use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111):
+  use-sync-external-store@1.6.0(react@19.2.8):
     dependencies:
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
 
   utility-types@3.11.0: {}
 
@@ -2708,15 +2708,15 @@ snapshots:
 
   zod@4.4.3: {}
 
-  zustand@4.5.7(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111):
+  zustand@4.5.7(@types/react@19.2.18)(react@19.2.8):
     dependencies:
-      use-sync-external-store: 1.6.0(react@19.3.0-canary-1ea46df8-20251111)
+      use-sync-external-store: 1.6.0(react@19.2.8)
     optionalDependencies:
       '@types/react': 19.2.18
-      react: 19.3.0-canary-1ea46df8-20251111
+      react: 19.2.8
 
-  zustand@5.0.15(@types/react@19.2.18)(react@19.3.0-canary-1ea46df8-20251111)(use-sync-external-store@1.6.0(react@19.3.0-canary-1ea46df8-20251111)):
+  zustand@5.0.15(@types/react@19.2.18)(react@19.2.8)(use-sync-external-store@1.6.0(react@19.2.8)):
     optionalDependencies:
       '@types/react': 19.2.18
-      react: 19.3.0-canary-1ea46df8-20251111
-      use-sync-external-store: 1.6.0(react@19.3.0-canary-1ea46df8-20251111)
+      react: 19.2.8
+      use-sync-external-store: 1.6.0(react@19.2.8)
