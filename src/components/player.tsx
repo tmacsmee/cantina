@@ -2,13 +2,14 @@ import { useGLTF } from '@react-three/drei';
 import BVHEcctrl, { type BVHEcctrlApi } from 'bvhecctrl';
 import { useRef } from 'react';
 import { Object3D } from 'three';
+import playerModelUrl from '../assets/models/quigonjinn.glb?url';
 import useAnimatePlayer from '../hooks/use-animate-player';
 import { useCamera } from '../hooks/use-camera';
 
 export default function Player({ isPaused }: { isPaused: boolean }) {
   const ecctrl = useRef<BVHEcctrlApi>(null);
   const player = useRef<Object3D>(null);
-  const { scene, animations } = useGLTF('/quigonjinn.glb');
+  const { scene, animations } = useGLTF(playerModelUrl);
 
   useCamera(ecctrl, isPaused);
   useAnimatePlayer(animations, player, ecctrl, isPaused);

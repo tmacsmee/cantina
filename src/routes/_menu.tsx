@@ -1,6 +1,7 @@
 import { useGLTF } from '@react-three/drei';
 import { createFileRoute, Outlet, useRouter } from '@tanstack/react-router';
 import { useEffect, type CSSProperties } from 'react';
+import starfield from '../assets/images/starfield.png';
 import useSounds from '../hooks/use-sounds';
 
 export const Route = createFileRoute('/_menu')({
@@ -45,6 +46,7 @@ function Starfield({ width }: { width: number }) {
       style={
         {
           '--starfield-width': `${width}px`,
+          'background-image': `url(${starfield})`,
         } as CSSProperties
       }
       className="animate-starfield fixed inset-0 bg-[url('/starfield.png')] bg-size-(--starfield-width) bg-repeat"

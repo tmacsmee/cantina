@@ -63,7 +63,7 @@
 // }
 
 import { createFileRoute, Link } from '@tanstack/react-router';
-import titleUrl from '../assets/title.svg';
+import titleUrl from '../assets/images/title.svg';
 import { useAppLifecycle } from '../components/app-lifecycle-provider';
 import Menu, { type MenuItemProps } from '../components/menu';
 import SplashScreen from '../components/splash-screen';
