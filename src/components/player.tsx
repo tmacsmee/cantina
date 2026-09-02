@@ -26,6 +26,8 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
       fallGravityFactor={1}
       turnSpeed={9}
       delay={0}
+      // counterAccFactor={20}
+      airDragFactor={1}
     >
       <group ref={player} position={[0, -0.78, 0]} scale={3.2} castShadow>
         <primitive object={scene} />

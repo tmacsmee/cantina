@@ -15,6 +15,7 @@
   --animate-starfield: background-scroll 120s linear infinite;
   --animate-splash-screen: splash-screen 5s 1s;
   --animate-start-text: start-text-flash 1s step-end infinite;
+  --animate-mask: mask 1s linear infinite;
 
   @keyframes menu-flash {
     0% {
@@ -77,4 +78,23 @@
   -webkit-text-stroke: var(--text-stroke-width)
     color-mix(currentColor 30%, black);
   paint-order: stroke fill;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: mask 1s linear forwards;
+  mask-image: linear-gradient(to right, white 95%, transparent);
+  mask-repeat: no-repeat;
+  mask-position: right 100vw bottom 0px;
+}
+
+@keyframes mask {
+  100% {
+    mask-position: right 0px bottom 0px;
+  }
 }

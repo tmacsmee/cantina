@@ -26,7 +26,7 @@ export const SoundContext = createContext<SoundContext | undefined>(undefined);
 
 export default function SoundProvider({ children }: { children: ReactNode }) {
   // const [volume, setVolume] = useState(5);
-  const [volume, setVolume] = useState(0);
+  const [volume, setVolume] = useState(1);
   const [isMusicOn, setIsMusicOn] = useState(true);
 
   const scaledVolume = volume / 10;
@@ -40,6 +40,7 @@ export default function SoundProvider({ children }: { children: ReactNode }) {
   const cantina = useSound(cantinaMusic, {
     volume: isMusicOn ? scaledVolume : 0,
   });
+  cantina[1].sound?.loop(true);
 
   const sounds = {
     menuMove,

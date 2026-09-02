@@ -6,11 +6,11 @@ import SoundProvider from '../components/sound-provider';
 function RootLayout() {
   return (
     <SoundProvider>
-      <ScreenWipeProvider>
-        <AppLifecycleProvider>
-          <Outlet />
-        </AppLifecycleProvider>
-      </ScreenWipeProvider>
+      {/* <ScreenWipeProvider> */}
+      <AppLifecycleProvider>
+        <Outlet />
+      </AppLifecycleProvider>
+      {/* </ScreenWipeProvider> */}
     </SoundProvider>
   );
 }
