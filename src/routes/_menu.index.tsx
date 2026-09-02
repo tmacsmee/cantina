@@ -75,14 +75,17 @@ export const Route = createFileRoute('/_menu/')({
 
 const menuItems: MenuItemProps[] = [
   {
+    key: 0,
     render: <Link to="/play" viewTransition />,
     children: 'New Game',
   },
   {
+    key: 1,
     render: <Link to="/options" />,
     children: 'Options',
   },
   {
+    key: 2,
     render: <Link to="/video-settings" />,
     children: 'Video Settings',
   },

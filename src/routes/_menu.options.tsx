@@ -55,20 +55,18 @@ function Options() {
 
   const menuItems: MenuItemProps[] = [
     {
+      key: 0,
       children: `Audio Volume: ${volume} ⁄ 10`,
       onKeyDown: handleVolumeKeyDown,
     },
     {
+      key: 1,
       children: `Music: ${isMusicOn ? 'On' : 'Off'}`,
       onClick: () => {
         setIsMusicOn((prev) => !prev);
       },
     },
-    {
-      render: <Link to="/" />,
-      isBackButton: true,
-      children: 'Back',
-    },
+    { key: 2, render: <Link to="/" />, isBackButton: true, children: 'Back' },
   ];
 
   return (

@@ -1,6 +1,4 @@
-import { flushSync } from '@react-three/fiber';
 import { useEffect } from 'react';
-import useScreenWipe from '../hooks/use-screen-wipe';
 import useSounds from '../hooks/use-sounds';
 import { screenWipe } from '../lib/utils';
 import { useAppLifecycle } from './app-lifecycle-provider';

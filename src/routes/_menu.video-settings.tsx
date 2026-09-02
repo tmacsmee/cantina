@@ -7,6 +7,7 @@ export const Route = createFileRoute('/_menu/video-settings')({
 
 const menuItems: MenuItemProps[] = [
   {
+    key: 0,
     render: <Link to="/" />,
     isBackButton: true,
     children: 'Back',

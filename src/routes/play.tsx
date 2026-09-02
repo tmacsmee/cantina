@@ -1,4 +1,3 @@
-import { useProgress } from '@react-three/drei';
 import { createFileRoute } from '@tanstack/react-router';
 import { Suspense, useEffect, useState } from 'react';
 import Game from '../components/game';

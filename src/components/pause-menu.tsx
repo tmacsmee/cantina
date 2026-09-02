@@ -10,10 +10,10 @@ export default function PauseMenu({
   onOpenChange: (isOpen: boolean) => void;
 }) {
   const menuItems: MenuItemProps[] = [
-    { children: 'Resume' },
-    { children: 'Options' },
-    { children: 'Extras' },
-    { children: 'Quit', render: <Link to="/" /> },
+    { key: 0, children: 'Resume' },
+    { key: 1, children: 'Options' },
+    { key: 2, children: 'Extras' },
+    { key: 3, children: 'Quit', render: <Link to="/" viewTransition /> },
   ];
 
   return (

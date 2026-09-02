@@ -59,8 +59,9 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
 
   return (
     <div className="font-menu flex flex-col gap-y-1 text-center text-4xl font-bold tracking-tight text-[#1a72c8] [-webkit-text-stroke:5px_#001327] [paint-order:stroke_fill]">
-      {menuItems.map(({ isBackButton, ...props }, index) => (
+      {menuItems.map(({ isBackButton, key, ...props }, index) => (
         <MenuItem
+          key={key}
           ref={(item: HTMLButtonElement) => {
             menuItemRefs.current[index] = item;
           }}
@@ -74,6 +75,7 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
 }
 
 export type MenuItemProps = useRender.ComponentProps<'button'> & {
+  key: number;
   defaultOnKeyDown?: (event: KeyboardEvent) => void;
   isBackButton?: boolean;
 };
