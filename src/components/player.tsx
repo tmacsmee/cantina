@@ -1,10 +1,12 @@
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, useKeyboardControls } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import BVHEcctrl, { type BVHEcctrlApi } from 'bvhecctrl';
 import { useRef } from 'react';
 import { Object3D } from 'three';
 import playerModelUrl from '../assets/models/quigonjinn.glb?url';
-import useAnimatePlayer from '../hooks/use-animate-player';
 import { useCamera } from '../hooks/use-camera';
+import useDoubleJump from '../hooks/use-double-jump';
+import usePlayerAnimation from '../hooks/use-player-animation';
 
 export default function Player({ isPaused }: { isPaused: boolean }) {
   const ecctrl = useRef<BVHEcctrlApi>(null);
@@ -12,7 +14,16 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
   const { scene, animations } = useGLTF(playerModelUrl);
 
   useCamera(ecctrl, isPaused);
-  useAnimatePlayer(animations, player, ecctrl, isPaused);
+
+  const { hasDoubleJumped, prevIsOnGround } = useDoubleJump(ecctrl);
+  usePlayerAnimation(
+    animations,
+    player,
+    ecctrl,
+    hasDoubleJumped,
+    prevIsOnGround,
+    isPaused,
+  );
 
   return (
     <BVHEcctrl
@@ -23,11 +34,10 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
       maxWalkSpeed={3.4}
       maxRunSpeed={1.6}
       jumpVel={8}
-      gravity={22}
-      fallGravityFactor={1}
+      gravity={20}
+      fallGravityFactor={0.9}
       turnSpeed={9}
       delay={0}
-      // counterAccFactor={20}
       airDragFactor={1}
     >
       <group ref={player} position={[0, -0.78, 0]} scale={3.2} castShadow>

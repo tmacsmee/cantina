@@ -26,10 +26,9 @@ export const SoundContext = createContext<SoundContext | undefined>(undefined);
 
 export default function SoundProvider({ children }: { children: ReactNode }) {
   const [volume, setVolume] = useState(5);
-  // const [volume, setVolume] = useState(1);
   const [isMusicOn, setIsMusicOn] = useState(true);
 
-  const scaledVolume = volume / 10;
+  const scaledVolume = volume / 30;
   const menuMove = useSound(menuMoveSound, { volume: scaledVolume });
   const menuSelect = useSound(menuSelectSound, { volume: scaledVolume });
   const menuBack = useSound(menuBackSound, { volume: scaledVolume });
