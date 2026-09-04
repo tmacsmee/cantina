@@ -1,7 +1,7 @@
-import { Link, useNavigate } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import { useEffect, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 import type { MenuItemProps } from '../components/menu';
-import Menu, { SubMenu } from '../components/menu';
+import { SubMenu } from '../components/menu';
 import useSounds from '../hooks/use-sounds';
 
 const MAX_VOLUME = 10;
