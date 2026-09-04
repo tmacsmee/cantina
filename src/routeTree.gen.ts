@@ -9,14 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as MenuRouteImport } from './routes/_menu'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as PlayRouteImport } from './routes/play'
-import { Route as MenuIndexRouteImport } from './routes/_menu.index'
-import { Route as MenuOptionsRouteImport } from './routes/_menu.options'
-import { Route as MenuVideoSettingsRouteImport } from './routes/_menu.video-settings'
 
-const MenuRoute = MenuRouteImport.update({
-  id: '/_menu',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlayRoute = PlayRouteImport.update({
@@ -24,68 +22,40 @@ const PlayRoute = PlayRouteImport.update({
   path: '/play',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MenuIndexRoute = MenuIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => MenuRoute,
-} as any)
-const MenuOptionsRoute = MenuOptionsRouteImport.update({
-  id: '/options',
-  path: '/options',
-  getParentRoute: () => MenuRoute,
-} as any)
-const MenuVideoSettingsRoute = MenuVideoSettingsRouteImport.update({
-  id: '/video-settings',
-  path: '/video-settings',
-  getParentRoute: () => MenuRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof MenuIndexRoute
+  '/': typeof IndexRoute
   '/play': typeof PlayRoute
-  '/options': typeof MenuOptionsRoute
-  '/video-settings': typeof MenuVideoSettingsRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/play': typeof PlayRoute
-  '/options': typeof MenuOptionsRoute
-  '/video-settings': typeof MenuVideoSettingsRoute
-  '/': typeof MenuIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_menu': typeof MenuRouteWithChildren
+  '/': typeof IndexRoute
   '/play': typeof PlayRoute
-  '/_menu/options': typeof MenuOptionsRoute
-  '/_menu/video-settings': typeof MenuVideoSettingsRoute
-  '/_menu/': typeof MenuIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/play' | '/options' | '/video-settings'
+  fullPaths: '/' | '/play'
   fileRoutesByTo: FileRoutesByTo
-  to: '/play' | '/options' | '/video-settings' | '/'
-  id:
-    | '__root__'
-    | '/_menu'
-    | '/play'
-    | '/_menu/options'
-    | '/_menu/video-settings'
-    | '/_menu/'
+  to: '/' | '/play'
+  id: '__root__' | '/' | '/play'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  MenuRoute: typeof MenuRouteWithChildren
+  IndexRoute: typeof IndexRoute
   PlayRoute: typeof PlayRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_menu': {
-      id: '/_menu'
-      path: ''
+    '/': {
+      id: '/'
+      path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof MenuRouteImport
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/play': {
@@ -95,46 +65,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlayRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_menu/': {
-      id: '/_menu/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof MenuIndexRouteImport
-      parentRoute: typeof MenuRoute
-    }
-    '/_menu/options': {
-      id: '/_menu/options'
-      path: '/options'
-      fullPath: '/options'
-      preLoaderRoute: typeof MenuOptionsRouteImport
-      parentRoute: typeof MenuRoute
-    }
-    '/_menu/video-settings': {
-      id: '/_menu/video-settings'
-      path: '/video-settings'
-      fullPath: '/video-settings'
-      preLoaderRoute: typeof MenuVideoSettingsRouteImport
-      parentRoute: typeof MenuRoute
-    }
   }
 }
 
-interface MenuRouteChildren {
-  MenuOptionsRoute: typeof MenuOptionsRoute
-  MenuVideoSettingsRoute: typeof MenuVideoSettingsRoute
-  MenuIndexRoute: typeof MenuIndexRoute
-}
-
-const MenuRouteChildren: MenuRouteChildren = {
-  MenuOptionsRoute: MenuOptionsRoute,
-  MenuVideoSettingsRoute: MenuVideoSettingsRoute,
-  MenuIndexRoute: MenuIndexRoute,
-}
-
-const MenuRouteWithChildren = MenuRoute._addFileChildren(MenuRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
-  MenuRoute: MenuRouteWithChildren,
+  IndexRoute: IndexRoute,
   PlayRoute: PlayRoute,
 }
 export const routeTree = rootRouteImport

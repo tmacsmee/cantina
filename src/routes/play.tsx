@@ -5,7 +5,7 @@ import greenRing from '../assets/images/green_ring.png';
 import quiGon from '../assets/images/quigonjinn.png';
 import Game from '../components/game';
 import Hud from '../components/hud';
-import Menu from '../components/pause-menu';
+import PauseMenu from '../components/pause-menu';
 import useSounds from '../hooks/use-sounds';
 import { cn, screenWipe } from '../lib/utils';
 
@@ -71,7 +71,7 @@ function RouteComponent() {
       <Suspense fallback={null}>
         <Game isPaused={isPaused} onReady={handleReady} />
       </Suspense>
-      <Menu open={isPaused} onOpenChange={handleMenuOpenChange} />
+      <PauseMenu open={isPaused} onOpenChange={handleMenuOpenChange} />
       <Hud />
       {!isLoadingScreenFinished && (
         <LoadingScreen

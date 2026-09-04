@@ -45,12 +45,11 @@
   }
 
   @keyframes background-scroll {
-    0% {
-      background-position: 0 0;
-    }
     100% {
-      background-position: calc(var(--starfield-width) * -4)
-        calc(var(--starfield-width) * -1);
+      background-position:
+        calc(var(--bg1) * -4) calc(var(--bg1) * -1),
+        calc(var(--bg2) * -4) calc(var(--bg2) * -1),
+        calc(var(--bg3) * -4) calc(var(--bg3) * -1);
     }
   }
 
@@ -74,10 +73,28 @@
   isolation: isolate;
 }
 
+.starfield {
+  --bg1: 250px;
+  --bg2: 300px;
+  --bg3: 350px;
+  background-image:
+    url('/starfield.png'), url('/starfield.png'), url('/starfield.png');
+  background-size:
+    var(--bg1) var(--bg1),
+    var(--bg2) var(--bg2),
+    var(--bg3) var(--bg3);
+}
+
 .text-stroke {
   -webkit-text-stroke: var(--text-stroke-width)
     color-mix(currentColor 30%, black);
   paint-order: stroke fill;
+}
+
+@keyframes mask {
+  100% {
+    mask-position: right 0px bottom 0px;
+  }
 }
 
 ::view-transition-old(root),
@@ -91,10 +108,4 @@
   mask-image: linear-gradient(to right, white 95%, transparent);
   mask-repeat: no-repeat;
   mask-position: right 100vw bottom 0px;
-}
-
-@keyframes mask {
-  100% {
-    mask-position: right 0px bottom 0px;
-  }
 }

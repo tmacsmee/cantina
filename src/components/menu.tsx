@@ -12,9 +12,9 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
   const { hasShownSplash } = useAppLifecycle();
 
   useEffect(() => {
-    if (!hasShownSplash) {
-      return;
-    }
+    // if (!hasShownSplash) {
+    //   return;
+    // }
 
     menuItemRefs.current[0].focus();
   }, [hasShownSplash]);
@@ -97,4 +97,24 @@ export function MenuItem({
   });
 
   return element;
+}
+
+export function SubMenu({
+  menuItems,
+  onBack,
+}: {
+  menuItems: MenuItemProps[];
+  onBack: () => void;
+}) {
+  const withBack = [
+    ...menuItems,
+    {
+      key: menuItems.length,
+      render: <button onClick={onBack} />,
+      isBackButton: true,
+      children: 'Back',
+    },
+  ];
+
+  return <Menu menuItems={withBack} />;
 }
