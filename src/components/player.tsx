@@ -1,5 +1,4 @@
-import { useGLTF, useKeyboardControls } from '@react-three/drei';
-import { useFrame } from '@react-three/fiber';
+import { useGLTF } from '@react-three/drei';
 import BVHEcctrl, { type BVHEcctrlApi } from 'bvhecctrl';
 import { useRef } from 'react';
 import { Object3D } from 'three';
