@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import { Suspense, useEffect, useState } from 'react';
 import blueRing from '../assets/images/blue_ring.png';
 import greenRing from '../assets/images/green_ring.png';
+import obiWan from '../assets/images/obi_wan.png';
 import quiGon from '../assets/images/quigonjinn.png';
 import Game from '../components/game';
 import Hud from '../components/hud';
@@ -135,7 +136,7 @@ function LoadingScreen({
         onAnimationEnd={handleAnimationEnd}
       >
         <img src={greenRing} className="absolute size-full" />
-        <img src={quiGon} className="absolute size-full" />
+        <img src={obiWan} className="absolute size-full" />
       </div>
     </div>
   );
