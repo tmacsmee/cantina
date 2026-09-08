@@ -21,7 +21,7 @@ export default function Cantina() {
         lamp.scale.y *= -1;
       }
 
-      time.current -= 0.5;
+      time.current = 0;
     }
   });
 
