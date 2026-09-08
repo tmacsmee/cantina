@@ -39,7 +39,7 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
       delay={0}
       airDragFactor={1}
     >
-      <group ref={player} position={[0, -0.78, 0]} scale={3.2} castShadow>
+      <group ref={player} position={[0, -0.78, 0]} scale={3.2}>
         <primitive object={scene} />
       </group>
     </BVHEcctrl>

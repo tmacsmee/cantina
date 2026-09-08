@@ -4,7 +4,8 @@ import {
   useKeyboardControls,
 } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
-import { Vector3 } from 'three';
+import { useEffect, useRef } from 'react';
+import { PerspectiveCamera as TPerspectiveCamera, Vector3 } from 'three';
 import type { Controls } from '../lib/types';
 
 const cameraUp = new Vector3(0, 1, 0);
@@ -13,7 +14,25 @@ const cameraRight = new Vector3();
 const delta = new Vector3();
 
 export default function Freecam() {
+  const camera = useRef<TPerspectiveCamera>(null);
   const [, getKeys] = useKeyboardControls<Controls>();
+
+  useEffect(() => {
+    function handleKeyPress(event: KeyboardEvent) {
+      if (!camera.current) {
+        return;
+      }
+
+      if (event.key === '`') {
+        console.log(camera.current.position);
+      }
+    }
+
+    document.addEventListener('keypress', handleKeyPress);
+    return () => {
+      document.removeEventListener('keypress', handleKeyPress);
+    };
+  }, []);
 
   useFrame(({ camera }) => {
     const { leftward, rightward, forward, backward, run, jump, crouch } =
@@ -38,7 +57,7 @@ export default function Freecam() {
 
   return (
     <PointerLockControls>
-      <PerspectiveCamera fov={60} makeDefault />
+      <PerspectiveCamera ref={camera} fov={60} makeDefault />
     </PointerLockControls>
   );
 }

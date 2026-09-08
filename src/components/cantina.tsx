@@ -18,7 +18,6 @@ export default function Cantina() {
     time.current += delta;
     if (time.current >= 0.5) {
       for (const lamp of lamps.current) {
-        console.log(lamp);
         lamp.scale.y *= -1;
       }
 
