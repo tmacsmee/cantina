@@ -4,7 +4,7 @@ import {
   type KeyboardControlsEntry,
 } from '@react-three/drei';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Color } from 'three';
 import type { Controls } from '../lib/types';
 import Cantina from './cantina';

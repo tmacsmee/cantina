@@ -6,7 +6,7 @@ export default function DeviceCheck({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     function checkDevice() {
-      const widthOK = window.innerWidth >= 1024;
+      const widthOK = window.innerWidth >= 800;
       const pointerOK = window.matchMedia('(pointer: fine)').matches;
       setSupported(widthOK && pointerOK);
     }
