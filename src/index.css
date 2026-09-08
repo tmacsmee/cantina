@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: 'News Gothic';
-  src: url('/News Gothic Bold.otf') format('truetype');
+  src: url('./assets/fonts/News Gothic Bold.otf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }

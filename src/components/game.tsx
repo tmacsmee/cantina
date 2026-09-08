@@ -9,6 +9,8 @@ import { Color } from 'three';
 import type { Controls } from '../lib/types';
 import Cantina from './cantina';
 import CantinaBand from './cantina-band';
+import ElapsedTime from './elapsed-time';
+import Freecam from './freecam';
 import Player from './player';
 
 const keyboardMap: KeyboardControlsEntry<Controls>[] = [
@@ -45,6 +47,7 @@ export default function Game({
       </KeyboardControls>
       <Cantina />
       <CantinaBand />
+      <ElapsedTime />
     </Canvas>
   );
 }

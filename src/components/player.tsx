@@ -26,7 +26,7 @@ export default function Player({ isPaused }: { isPaused: boolean }) {
 
   return (
     <BVHEcctrl
-      // debug
+      debug
       ref={ecctrl}
       paused={isPaused}
       position={[4, 2, 7]}
