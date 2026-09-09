@@ -1,7 +1,7 @@
 import { useGLTF } from '@react-three/drei';
 import { createFileRoute, Link, useRouter } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
-import titleUrl from '../assets/images/title.svg';
+import titleUrl from '../assets/images/title.webp';
 import cantinaUrl from '../assets/models/cantina.glb?url';
 import playerModelUrl from '../assets/models/quigonjinn.glb?url';
 import { useAppLifecycle } from '../components/app-lifecycle-provider';
