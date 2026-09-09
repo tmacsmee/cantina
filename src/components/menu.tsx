@@ -12,10 +12,6 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
   const { hasShownSplash } = useAppLifecycle();
 
   useEffect(() => {
-    // if (!hasShownSplash) {
-    //   return;
-    // }
-
     menuItemRefs.current[0].focus();
   }, [hasShownSplash]);
 

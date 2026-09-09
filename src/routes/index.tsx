@@ -52,6 +52,10 @@ function MenuRoute() {
     useGLTF.preload(playerModelUrl);
     useGLTF.preload(cantinaUrl);
     router.preloadRoute({ to: '/play' });
+
+    // preload title image
+    const title = new Image();
+    title.src = titleUrl;
   }, [router]);
 
   useEffect(() => {
@@ -77,6 +81,7 @@ function MenuRoute() {
                 }
               }}
             />
+
             <div
               className={cn(
                 'fade-in animate-in fill-mode-backwards',
