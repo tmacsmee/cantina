@@ -94,19 +94,19 @@ function LoadingScreen({
   const [hasEntered, setHasEntered] = useState(false);
 
   let playerOneAnimation: string =
-    'animate-in slide-in-from-left-100 fill-mode-backwards fade-in delay-1000 ease-in-out duration-2000';
+    'animate-in slide-in-from-left-100 fill-mode-backwards fade-in delay-1000 ease-out duration-1000';
   let playerTwoAnimation: string =
-    'animate-in slide-in-from-right-100 fill-mode-backwards fade-in delay-1200 ease-in-out duration-2000';
+    'animate-in slide-in-from-right-100 fill-mode-backwards fade-in delay-1400 ease-out duration-1000';
 
   if (hasEntered) {
     if (isReady) {
       playerOneAnimation =
-        'animate-out fade-out fill-mode-forwards duration-2000';
+        'animate-out fade-out fill-mode-forwards duration-1500';
       playerTwoAnimation =
-        'animate-out fade-out fill-mode-forwards delay-200 duration-2000';
+        'animate-out fade-out fill-mode-forwards delay-400 duration-1500';
     } else {
       playerOneAnimation = 'animate-pulse';
-      playerTwoAnimation = 'animate-pulse delay-200';
+      playerTwoAnimation = 'animate-pulse delay-400';
     }
   }
 
