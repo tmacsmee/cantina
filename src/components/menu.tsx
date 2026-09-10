@@ -1,4 +1,5 @@
 import { mergeProps, useRender } from '@base-ui/react';
+import { FocusTrap } from 'focus-trap-react';
 import type { KeyboardEvent } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import useSounds from '../hooks/use-sounds';
@@ -23,12 +24,8 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
     },
   } = useSounds();
 
-  function handleKeyDown(event: KeyboardEvent, isBackButton?: boolean) {
+  function handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-      if (!menuItemRefs.current) {
-        return;
-      }
-
       const increment = event.key === 'ArrowDown' ? 1 : -1;
       const nextIndex = Math.min(
         menuItemRefs.current.length - 1,
@@ -40,11 +37,13 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
       }
 
       setActiveIndex(nextIndex);
-      menuItemRefs.current[nextIndex]?.focus();
+      menuItemRefs.current[nextIndex].focus();
       playMenuMove();
     }
 
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' || event.key === 'Space') {
+      const isBackButton =
+        menuItemRefs.current[activeIndex].textContent === 'Back';
       if (isBackButton) {
         playMenuBack();
       } else {
@@ -54,36 +53,34 @@ export default function Menu({ menuItems }: { menuItems: MenuItemProps[] }) {
   }
 
   return (
-    <div className="font-menu flex flex-col gap-y-1 text-center text-4xl font-bold tracking-tight text-[#1a72c8] [-webkit-text-stroke:5px_#001327] [paint-order:stroke_fill]">
-      {menuItems.map(({ isBackButton, key, ...props }, index) => (
-        <MenuItem
-          key={key}
-          ref={(item: HTMLButtonElement) => {
-            menuItemRefs.current[index] = item;
-          }}
-          defaultOnKeyDown={(event) => handleKeyDown(event, isBackButton)}
-          tabIndex={activeIndex === index ? 0 : -1}
-          {...props}
-        />
-      ))}
-    </div>
+    <FocusTrap>
+      <div
+        onKeyDown={handleKeyDown}
+        className="font-menu text-stroke-md flex flex-col gap-y-1 text-center text-4xl font-bold tracking-tight text-[#1a72c8]"
+      >
+        {menuItems.map(({ key, ...props }, index) => (
+          <MenuItem
+            key={key}
+            ref={(item: HTMLButtonElement) => {
+              menuItemRefs.current[index] = item;
+            }}
+            tabIndex={activeIndex === index ? 0 : -1}
+            {...props}
+          />
+        ))}
+      </div>
+    </FocusTrap>
   );
 }
 
 export type MenuItemProps = useRender.ComponentProps<'button'> & {
   key: number;
-  defaultOnKeyDown?: (event: KeyboardEvent) => void;
   isBackButton?: boolean;
 };
 
-export function MenuItem({
-  render,
-  defaultOnKeyDown,
-  ...props
-}: MenuItemProps) {
+export function MenuItem({ render, ...props }: MenuItemProps) {
   const defaultProps: useRender.ElementProps<'button'> = {
     className: 'focus:animate-menu focus:outline-none',
-    onKeyDown: defaultOnKeyDown,
   };
 
   const element = useRender({

@@ -86,9 +86,18 @@
     var(--bg3) var(--bg3);
 }
 
-.text-stroke {
-  -webkit-text-stroke: var(--text-stroke-width)
-    color-mix(currentColor 30%, black);
+.text-stroke-sm {
+  -webkit-text-stroke: 3px color-mix(currentColor 30%, black);
+  paint-order: stroke fill;
+}
+
+.text-stroke-md {
+  -webkit-text-stroke: 5px color-mix(currentColor 30%, black);
+  paint-order: stroke fill;
+}
+
+.text-stroke-lg {
+  -webkit-text-stroke: 8px color-mix(currentColor 30%, black);
   paint-order: stroke fill;
 }
 
